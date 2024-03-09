@@ -1,13 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Suspense, lazy } from "react";
+import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
+import { Provider } from "react-redux";
+import Loading from "./components/Loading";
+import store from "./store";
+import "./styles/index.scss";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const App = lazy(() => import("./App"));
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<Loading />}>
+      <HelmetProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </HelmetProvider>
+    </Suspense>
   </React.StrictMode>
 );
 
