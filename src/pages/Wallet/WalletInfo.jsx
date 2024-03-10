@@ -29,8 +29,8 @@ const WalletInfo = () => {
         <Link to="/wallet/out" className="w-full max-w-[200px]">
           <Button className="w-full">Out</Button>
         </Link>
-        <Link to="/accounts/withraw" className="w-full max-w-[200px]">
-          <Button className="w-full">Withraw</Button>
+        <Link to="/accounts/withdraw" className="w-full max-w-[200px]">
+          <Button className="w-full">Withdraw</Button>
         </Link>
       </div>
       <Link to="/wallet/record" className="absolute top-4 right-4 text-cyan-700">

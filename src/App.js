@@ -17,20 +17,12 @@ const App = () => {
         dispatch(logout());
       }
     }
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
   }, [dispatch]);
 
   return (
     <>
       <RouterProvider router={router} />
-      <Toaster position="bottom-left" richColors duration={3000} />
+      <Toaster position="top-right" duration={3000} />
     </>
   );
 };

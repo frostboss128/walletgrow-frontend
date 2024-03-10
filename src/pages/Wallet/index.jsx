@@ -1,13 +1,28 @@
 import React from "react";
 import { HelpCircle, CircleUserRound, LogOut } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../slices/authSlice";
+import { useLogoutMutation } from "../../slices/usersApiSlice";
 import { Link } from "react-router-dom";
 import FutureCard from "./FutureCard";
 import WalletInfo from "./WalletInfo";
+import { toast } from "sonner";
 
 const Wallet = () => {
   const dispatch = useDispatch();
   const { userinfo } = useSelector(({ auth }) => auth);
+  const [logoutApiCall, { isLoading }] = useLogoutMutation();
+
+  const logOutHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await logoutApiCall();
+      dispatch(logout());
+      toast.success(`logged out`);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
   return (
     <>
@@ -18,7 +33,7 @@ const Wallet = () => {
           </Link>
           <div className="flex-grow text-md sx:text-xl">{userinfo?.username}</div>
           <div>LEVEL</div>
-          <LogOut />
+          <LogOut onClick={logOutHandler} />
         </div>
         <WalletInfo />
       </div>

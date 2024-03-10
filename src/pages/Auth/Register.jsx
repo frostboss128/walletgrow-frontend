@@ -1,25 +1,36 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { setCredentials } from "../../slices/authSlice";
+import { useRegisterMutation } from "../../slices/usersApiSlice";
 import { Mail, UserSearch, ShieldPlus, KeyRound } from "lucide-react";
 import { Input } from "../../components/ui/input";
-import { Switch } from "../../components/ui/switch";
 import { Card } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { Checkbox } from "../../components/ui/checkbox";
+import { toast } from "sonner";
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [register, { isLoading }] = useRegisterMutation();
 
-  const [data, setData] = useState({ email: "", username: "", password: "", repassword: "", code: "" });
+  const [data, setData] = useState({ email: "", username: "", password: "", password2: "", code: "" });
   const [disabled, setDisabled] = useState(true);
 
   const handleChange = (e) => setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
-  const handleCheckChange = (e) => (e.target.dataset.state !== "unchecked" ? setDisabled(true) : setDisabled(false));
+  const handleCheckChange = (value) => setDisabled(!value);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    try {
+      const res = await register(data).unwrap();
+      dispatch(setCredentials(res));
+      toast.success(`Successfully registered`);
+      navigate("/account");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -33,7 +44,7 @@ const Register = () => {
         </div>
         <div className="space-y-10">
           <div className="space-y-4">
-            <div className="flex items-center space-x-4 rounded-md border px-4 divide-x-2">
+            <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
               <div>
                 <Mail />
               </div>
@@ -47,7 +58,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            <div className="flex items-center space-x-4 rounded-md border px-4 divide-x-2">
+            <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
               <div>
                 <UserSearch />
               </div>
@@ -61,7 +72,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            <div className="flex items-center space-x-4 rounded-md border px-4 divide-x-2">
+            <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
               <div>
                 <KeyRound />
               </div>
@@ -76,7 +87,7 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4 rounded-md border px-4 divide-x-2">
+            <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
               <div>
                 <ShieldPlus />
               </div>
@@ -92,7 +103,7 @@ const Register = () => {
             </div>
           </div>
           <div className="w-full flex justify-start items-center space-x-4">
-            <Checkbox className="w-6 h-6" onClick={handleCheckChange} />
+            <Checkbox className="w-6 h-6" onCheckedChange={handleCheckChange} />
             <p>
               I agree with <b>Wallet Grow</b> Privacy Policy and Terms of Service
             </p>

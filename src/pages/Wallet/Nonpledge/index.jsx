@@ -7,17 +7,11 @@ import { Button } from "../../../components/ui/button";
 const NonPledge = () => {
   return (
     <div>
-      <div className="flex flex-row w-full bg-cyan-400 px-6 py-2 font-bold text-lg text-gray-50">
-        <Link to="/wallet">
-          <div className="flex items-center gap-2">
-            <ChevronLeftCircle />
-            back
-          </div>
+      <div className="bg-cyan-400 px-6 py-2 font-bold text-lg text-gray-50 rounded-b-md text-center relative">
+        <Link to="/wallet" className="absolute left-3">
+          <ChevronLeftCircle />
         </Link>
-
-        <div className="flex-grow text-center">
-          <h2>Pledge</h2>
-        </div>
+        <h2>Non Pledge</h2>
       </div>
       <div className="px-4 sm:px-20 mt-8">
         <WalletInfo />

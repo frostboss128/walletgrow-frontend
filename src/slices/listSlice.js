@@ -1,23 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  lists: [],
-  detail: {},
-};
+const initialState = {};
 
 const listSlice = createSlice({
   name: "list",
   initialState,
-  reducers: {
-    getLists: (state, { payload }) => {
-      state.lists = payload;
-    },
-    getDetail: (state, { payload }) => {
-      state.detail = payload;
-    },
-  },
+  reducers: {},
 });
 
-export const { getLists, getDetail } = listSlice.actions;
+export const {} = listSlice.actions;
 
 export default listSlice.reducer;
