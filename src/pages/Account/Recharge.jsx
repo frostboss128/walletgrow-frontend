@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useRechargeToAccountMutation } from "../../slices/accountApiSlice";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
@@ -13,9 +12,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../components/ui/dialog";
-import { ArrowLeftCircle, Waypoints } from "lucide-react";
+import { Waypoints } from "lucide-react";
 import { toast } from "sonner";
 import isEmpty from "../../utils/isEmpty";
+import HeaderBar from "../../components/HeaderBar";
 
 const address1 = "TVhHmraG3wuAWmEN5hVARUoDjqnhTQAJPE";
 
@@ -50,12 +50,7 @@ const Recharge = () => {
 
   return (
     <div className="space-y-4">
-      <div className="bg-primary text-primary-foreground px-4 py-3 text-center relative">
-        <Link to="/account">
-          <ArrowLeftCircle className="absolute top-3 left-3" />
-        </Link>
-        <h1 className="font-bold">Recharge to your account</h1>
-      </div>
+      <HeaderBar to="/account" title="Recharge to your account" />
 
       <div className="flex flex-row items-center justify-between space-x-2 px-6">
         <div>Quantity</div>

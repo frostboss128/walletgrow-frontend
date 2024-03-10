@@ -21,6 +21,15 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
 
+    inWallet: builder.mutation({
+      query: (data) => ({
+        url: `${ACCOUNT_URL}/in`,
+        method: "POST",
+        body: data,
+      }),
+      providesTags: ["Account"],
+    }),
+
     getAll: builder.query({
       query: () => ({
         url: ACCOUNT_URL,
@@ -94,4 +103,4 @@ export const accountApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useRechargeToAccountMutation, useGetRechargeRecordQuery } = accountApiSlice;
+export const { useRechargeToAccountMutation, useGetRechargeRecordQuery, useInWalletMutation } = accountApiSlice;

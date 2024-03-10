@@ -1,17 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeftCircle } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import HeaderBar from "../../components/HeaderBar";
 
 const Service = () => {
   return (
     <div className="space-y-8 pb-8">
-      <div className="bg-primary text-primary-foreground px-4 py-3 text-center relative">
-        <Link to="/account">
-          <ArrowLeftCircle className="absolute top-3 left-3" />
-        </Link>
-        <h1 className="font-bold">Customer Service Center</h1>
-      </div>
+      <HeaderBar to="/account" title="Customer Service Center" />
 
       <div className="flex flex-row justify-between items-center space-x-2 p-4">
         <div>

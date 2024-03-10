@@ -20,11 +20,11 @@ const RecordList = lazy(() => import("../pages/Wallet/RecordList"));
 const Pledge = lazy(() => import("../pages/Wallet/Pledge"));
 const Nonpledge = lazy(() => import("../pages/Wallet/Nonpledge"));
 const Out = lazy(() => import("../pages/Wallet/Out"));
-const In = lazy(() => import("../pages/Wallet/In"));
 
 // Account
 const Account = lazy(() => import("../pages/Account"));
 const Recharge = lazy(() => import("../pages/Account/Recharge"));
+const In = lazy(() => import("../pages/Account/In"));
 const Withdraw = lazy(() => import("../pages/Account/Withdraw"));
 const Service = lazy(() => import("../pages/Account/Service"));
 const RechargeRecord = lazy(() => import("../pages/Account/RechargeRecord"));
@@ -94,11 +94,6 @@ const router = createBrowserRouter([
             element: <Nonpledge />,
           },
           {
-            path: "/wallet/in",
-            exact: true,
-            element: <In />,
-          },
-          {
             path: "/wallet/out",
             exact: true,
             element: <Out />,
@@ -150,6 +145,11 @@ const router = createBrowserRouter([
             path: "/account/recharge",
             exact: true,
             element: <Recharge />,
+          },
+          {
+            path: "/account/in",
+            exact: true,
+            element: <In />,
           },
           {
             path: "/account/withdraw",

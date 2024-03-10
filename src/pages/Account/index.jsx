@@ -67,7 +67,7 @@ const Account = () => {
           <div className="text-right">
             <div className="font-bold">COIN: ${walletInfo?.coin || 0}</div>
             <div className="flex flex-row space-x-2">
-              <Link to="/wallet/in">
+              <Link to="/account/in">
                 <Button size="sm" className="bg-cyan-600 w-full">
                   IN
                 </Button>
