@@ -10,7 +10,14 @@ export const walletApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+    outWallet: builder.mutation({
+      query: (data) => ({
+        url: `${WALLET_URL}/out`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetWalletInfoQuery } = walletApiSlice;
+export const { useGetWalletInfoQuery, useOutWalletMutation } = walletApiSlice;

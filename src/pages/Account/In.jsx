@@ -16,7 +16,8 @@ const In = () => {
     e.preventDefault();
     if (!coin) return;
     try {
-      await inWallet({ coin });
+      const res = await inWallet({ coin }).unwrap();
+      toast.success(res);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     } finally {

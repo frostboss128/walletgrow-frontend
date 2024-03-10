@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useProfileQuery } from "../../slices/usersApiSlice";
-import { useInWalletMutation } from "../../slices/accountApiSlice";
-import { ArrowLeftCircle } from "lucide-react";
+import { useOutWalletMutation, useGetWalletInfoQuery } from "../../slices/walletApiSlice";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { toast } from "sonner";
 import HeaderBar from "../../components/HeaderBar";
 
-const In = () => {
-  const { data: accountData, isLoading: accountLoading, refetch: accountRefetch } = useProfileQuery();
-  const [inWallet, { isLoading: inLoading }] = useInWalletMutation();
+const Out = () => {
+  const { data: walletInfo, isLoading: walletLoading, refetch: walletRefetch } = useGetWalletInfoQuery();
+  const [outWallet, { isLoading: inLoading }] = useOutWalletMutation();
 
   const [coin, setCoin] = useState(0);
 
@@ -18,11 +15,12 @@ const In = () => {
     e.preventDefault();
     if (!coin) return;
     try {
-      await inWallet({ coin });
+      const res = await outWallet({ coin }).unwrap();
+      toast.success(res);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     } finally {
-      accountRefetch();
+      walletRefetch();
     }
   };
 
@@ -31,13 +29,13 @@ const In = () => {
       <HeaderBar to="/account" title="In" />
       <div className="px-4 mt-8 space-y-4">
         <div className="p-2 border rounded-lg">
-          <h3 className="font-medium">Total</h3>
+          <h3 className="font-medium">Total in your X-Wallet</h3>
           <div className="flex flex-row justify-between items-center space-x-2">
             <div className="space-x-2">
               <span>Coin :</span>
-              <span className="font-bold text-green-500">{accountData?.coin || 0}</span>
+              <span className="font-bold text-green-500">{walletInfo?.coin || 0}</span>
             </div>
-            <Button size="sm" onClick={(e) => accountRefetch()}>
+            <Button size="sm" onClick={(e) => walletRefetch()}>
               Refresh
             </Button>
           </div>
@@ -57,4 +55,4 @@ const In = () => {
   );
 };
 
-export default In;
+export default Out;
