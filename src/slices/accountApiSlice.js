@@ -1,33 +1,43 @@
-import { PRODUCT_URL, MEMBER_URL, LIST_URL } from "../services/constants";
+import { ACCOUNT_URL } from "../services/constants";
 import { apiSlice } from "./apiSlice";
 
-export const productsApiSlice = apiSlice.injectEndpoints({
+export const accountApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    rechargeToAccount: builder.mutation({
+      query: (data) => ({
+        url: ACCOUNT_URL,
+        method: "POST",
+        body: data,
+      }),
+      providesTags: ["Account"],
+    }),
+
+    getRechargeRecord: builder.query({
+      query: () => ({
+        url: `${ACCOUNT_URL}`,
+        method: "GET",
+      }),
+      providesTags: ["Account"],
+      keepUnusedDataFor: 5,
+    }),
+
     getAll: builder.query({
       query: () => ({
-        url: LIST_URL,
+        url: ACCOUNT_URL,
       }),
       keepUnusedDataFor: 5,
       providesTags: ["List"],
     }),
     getDetail: builder.query({
       query: (listId) => ({
-        url: `${LIST_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
       }),
       keepUnusedDataFor: 5,
       providesTags: ["List"],
     }),
-    createList: builder.mutation({
-      query: (data) => ({
-        url: LIST_URL,
-        method: "POST",
-        body: data,
-      }),
-      providesTags: ["List"],
-    }),
     updateList: builder.mutation({
       query: ({ listId, status }) => ({
-        url: `${LIST_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "PUT",
         body: { status },
       }),
@@ -35,14 +45,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
     deleteList: builder.mutation({
       query: (listId) => ({
-        url: `${LIST_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "DELETE",
       }),
       providesTags: ["List"],
     }),
     addProduct: builder.mutation({
       query: ({ listId, data }) => ({
-        url: `${PRODUCT_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "POST",
         body: data,
       }),
@@ -50,7 +60,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
     updateProduct: builder.mutation({
       query: ({ listId, productId, status }) => ({
-        url: `${PRODUCT_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "PUT",
         body: { status },
         params: { productId },
@@ -59,7 +69,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
     removeProduct: builder.mutation({
       query: ({ listId, productId }) => ({
-        url: `${PRODUCT_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "DELETE",
         params: { productId },
       }),
@@ -67,7 +77,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
     addMember: builder.mutation({
       query: ({ listId, userId }) => ({
-        url: `${MEMBER_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "POST",
         params: { userId },
       }),
@@ -75,7 +85,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
     removeMember: builder.mutation({
       query: ({ listId, userId }) => ({
-        url: `${MEMBER_URL}/${listId}`,
+        url: `${ACCOUNT_URL}/${listId}`,
         method: "DELETE",
         params: { userId },
       }),
@@ -84,4 +94,4 @@ export const productsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const {} = productsApiSlice;
+export const { useRechargeToAccountMutation, useGetRechargeRecordQuery } = accountApiSlice;

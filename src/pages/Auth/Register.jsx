@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setCredentials } from "../../slices/authSlice";
 import { useRegisterMutation } from "../../slices/usersApiSlice";
+import { setAccountInfo } from "../../slices/accountSlice";
 import { Mail, UserSearch, ShieldPlus, KeyRound } from "lucide-react";
 import { Input } from "../../components/ui/input";
 import { Card } from "../../components/ui/card";
@@ -25,7 +26,8 @@ const Register = () => {
     e.preventDefault();
     try {
       const res = await register(data).unwrap();
-      dispatch(setCredentials(res));
+      dispatch(setCredentials({ _id: res._id, email: res.email, username: res.username }));
+      dispatch(setAccountInfo(res));
       toast.success(`Successfully registered`);
       navigate("/account");
     } catch (err) {
@@ -86,8 +88,21 @@ const Register = () => {
                 />
               </div>
             </div>
-
             <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
+              <div>
+                <KeyRound />
+              </div>
+              <div className="flex-grow">
+                <Input
+                  type="password"
+                  placeholder="Confirm your password"
+                  className="border-none w-full"
+                  name="password2"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            {/* <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
               <div>
                 <ShieldPlus />
               </div>
@@ -100,7 +115,7 @@ const Register = () => {
                   onChange={handleChange}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="w-full flex justify-start items-center space-x-4">
             <Checkbox className="w-6 h-6" onCheckedChange={handleCheckChange} />

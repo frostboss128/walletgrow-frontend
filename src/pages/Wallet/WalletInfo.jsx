@@ -29,7 +29,7 @@ const WalletInfo = () => {
         <Link to="/wallet/out" className="w-full max-w-[200px]">
           <Button className="w-full">Out</Button>
         </Link>
-        <Link to="/accounts/withdraw" className="w-full max-w-[200px]">
+        <Link to="/account/withdraw" className="w-full max-w-[200px]">
           <Button className="w-full">Withdraw</Button>
         </Link>
       </div>

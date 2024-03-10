@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../slices/authSlice";
 import { useLoginMutation } from "../../slices/usersApiSlice";
+import { setAccountInfo } from "../../slices/accountSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, KeyRound } from "lucide-react";
 import { Input } from "../../components/ui/input";
@@ -22,7 +23,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await login(data).unwrap();
-      dispatch(setCredentials(res));
+      dispatch(setCredentials({ _id: res._id, email: res.email, username: res.username }));
+      dispatch(setAccountInfo(res));
       toast.success(`Successfully logged in`);
       navigate("/account");
     } catch (err) {

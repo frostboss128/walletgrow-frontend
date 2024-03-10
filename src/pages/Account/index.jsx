@@ -1,11 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useGetWalletInfoQuery } from "../../slices/walletApiSlice";
 import { Headset, ArrowUpRightSquare, CheckCircle, CreditCard, Rocket, MessageCircleQuestion } from "lucide-react";
-import { Card, CardHeader, CardContent, CardFooter } from "../../components/ui/card";
+import { Card } from "../../components/ui/card";
 import { Progress } from "../../components/ui/progress";
 import { Button } from "../../components/ui/button";
+import { Coins } from "lucide-react";
 
 const Account = () => {
+  const { accountInfo } = useSelector(({ account }) => account);
+  const { data: walletInfo, isLoading: walletLoading, refetch: walletInfoRefetch } = useGetWalletInfoQuery();
+
   return (
     <div>
       <div className="bg-primary text-gray-200 space-y-2">
@@ -19,12 +25,15 @@ const Account = () => {
 
         <div className="flex flex-row justify-between items-center px-4">
           <div>
-            <div>Wallet2</div>
+            <div>{accountInfo?.username}</div>
             <div>Score: {"0"}</div>
           </div>
-          <div>
-            <div>Total Coin: {"0"}</div>
-            <div>COIN: {"35.35"}</div>
+          <div className="text-right">
+            <div className="flex flex-row items-center space-x-2 float-right">
+              <span>Total Coin</span>
+              <Coins />
+            </div>
+            <div className="font-bold">COIN: {accountInfo?.coin || 0}</div>
           </div>
         </div>
 
@@ -55,8 +64,8 @@ const Account = () => {
             <div>X-Wallet Total Coin</div>
             <div>Daily reward upto 2.3%</div>
           </div>
-          <div>
-            <div>COIN: $18.711</div>
+          <div className="text-right">
+            <div className="font-bold">COIN: ${walletInfo?.coin || 0}</div>
             <div className="flex flex-row space-x-2">
               <Link to="/wallet/in">
                 <Button size="sm" className="bg-cyan-600 w-full">
