@@ -17,13 +17,13 @@ const MobileNavbar = () => {
             <Home />
             <span>Home</span>
           </Link>
-          <Link
+          {/* <Link
             to="/project"
             className={clsx("flex flex-col items-center content-center", currentPath === "project" && "text-cyan-500")}
           >
             <HandCoins />
             <span>Project</span>
-          </Link>
+          </Link> */}
           <Link
             to="/wallet"
             className={clsx("flex flex-col items-center content-center", currentPath === "wallet" && "text-cyan-500")}
@@ -31,7 +31,7 @@ const MobileNavbar = () => {
             <Wallet />
             <span>X-Wallet</span>
           </Link>
-          <Link
+          {/* <Link
             to="/insurance"
             className={clsx(
               "flex flex-col items-center content-center",
@@ -40,7 +40,7 @@ const MobileNavbar = () => {
           >
             <ShieldCheck />
             <span>Insurance</span>
-          </Link>
+          </Link> */}
           <Link
             to="/account"
             className={clsx("flex flex-col items-center content-center", currentPath === "account" && "text-cyan-500")}

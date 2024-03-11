@@ -1,10 +1,12 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 // Layout
 const AuthLayout = lazy(() => import("../layout/AuthLayout"));
 const MainLayout = lazy(() => import("../layout/MainLayout"));
+const AdminLayout = lazy(() => import("../layout/AdminLayout"));
 
 // Auth
 const Login = lazy(() => import("../pages/Auth/Login"));
@@ -33,6 +35,13 @@ const WithdrawRecord = lazy(() => import("../pages/Account/WithdrawRecord"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 const WillReturn = lazy(() => import("../pages/WillReturn"));
 // const Insurance = lazy(() => import("../pages/Insurance"));
+
+// AdminPages
+const Dashboard = lazy(() => import("../pages/Admin/Dashboard"));
+const Users = lazy(() => import("../pages/Admin/Users"));
+const AdminRecharges = lazy(() => import("../pages/Admin/Recharges"));
+const AdminWithdraw = lazy(() => import("../pages/Admin/Withdraws"));
+const AdminHistory = lazy(() => import("../pages/Admin/History"));
 
 const router = createBrowserRouter([
   {
@@ -171,6 +180,45 @@ const router = createBrowserRouter([
             path: "/account/service",
             exact: true,
             element: <Service />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    exact: true,
+    element: <AdminRoute />,
+    children: [
+      {
+        path: "",
+        exact: true,
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/admin/",
+            exact: true,
+            element: <Dashboard />,
+          },
+          {
+            path: "/admin/users",
+            exact: true,
+            element: <Users />,
+          },
+          {
+            path: "/admin/recharges",
+            exact: true,
+            element: <AdminRecharges />,
+          },
+          {
+            path: "/admin/withdraws",
+            exact: true,
+            element: <AdminWithdraw />,
+          },
+          {
+            path: "/admin/history",
+            exact: true,
+            element: <AdminHistory />,
           },
         ],
       },
