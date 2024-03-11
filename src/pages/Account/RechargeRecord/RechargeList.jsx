@@ -24,8 +24,9 @@ const RechargeList = ({ recharge }) => {
           >
             {recharge.status}
           </div>
-          <div>
-            {recharge.coin} <span>{recharge.type.toUpperCase()}</span>
+          <div className="text-xs tx:text-sm">
+            <span>{recharge.coin}</span>&nbsp;
+            <span>{recharge.type.toUpperCase()}</span>
           </div>
         </div>
       </div>

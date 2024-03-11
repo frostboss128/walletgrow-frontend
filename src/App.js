@@ -13,9 +13,7 @@ const App = () => {
     if (expirationTime) {
       const currentTime = new Date().getTime();
 
-      if (currentTime > expirationTime) {
-        dispatch(logout());
-      }
+      if (currentTime > expirationTime) dispatch(logout());
     }
   }, [dispatch]);
 

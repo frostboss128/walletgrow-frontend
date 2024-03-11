@@ -26,7 +26,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const res = await register(data).unwrap();
-      dispatch(setCredentials({ _id: res._id, email: res.email, username: res.username }));
+      dispatch(setCredentials(res));
       dispatch(setAccountInfo(res));
       toast.success(`Successfully registered`);
       navigate("/account");

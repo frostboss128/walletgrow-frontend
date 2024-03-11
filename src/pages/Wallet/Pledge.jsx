@@ -3,7 +3,7 @@ import { useGetWalletInfoQuery } from "../../slices/walletApiSlice";
 import WalletInfo from "./WalletInfo";
 import { Button } from "../../components/ui/button";
 import HeaderBar from "../../components/HeaderBar";
-
+import { toast } from "sonner";
 const Pledge = () => {
   const { data: walletInfo, isLoading: walletInfoLoading, isError: walletInfoIsError } = useGetWalletInfoQuery();
 
@@ -22,7 +22,7 @@ const Pledge = () => {
 
         <div className="grid grid-cols-2 gap-1 justify-items-center pt-2 pb-6 font-bold">
           <div className="border-b-2 border-b-gray-800 border-dashed">INVESTMENT :</div>
-          <div>$ 10.163</div>
+          <div>$ {walletInfo?.invest || 0}</div>
           <div className="border-b-2 border-b-gray-800 border-dashed">DAILY INCOME :</div>
           <div>0.9 %</div>
           <div className="border-b-2 border-b-gray-800 border-dashed">TOTAL INCOME :</div>
@@ -52,7 +52,7 @@ const Pledge = () => {
             </ul>
           </div>
 
-          <div className="py-2">
+          {/* <div className="py-2">
             <h3 className="font-bold text-xl">Trading Starts in...</h3>
             <ul className="flex flex-row gap-4 justify-center font-semibold text-2xl mt-2">
               <li>
@@ -72,11 +72,13 @@ const Pledge = () => {
                 <div>S</div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex w-full justify-center py-6">
-          <Button className="text-xl min-w-[225px]">START NOW</Button>
+          <Button className="text-xl min-w-[225px]" onClick={(e) => toast.info(`Please contact our support team`)}>
+            START NOW
+          </Button>
         </div>
 
         <div className="px-4 font-bold pt-6 pb-2">

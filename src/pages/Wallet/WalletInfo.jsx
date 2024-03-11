@@ -21,11 +21,11 @@ const WalletInfo = ({ walletInfo }) => {
       <div className="flex flex-row w-full justify-around py-4 ">
         <div className="flex flex-col w-full items-center">
           <div>Month Income</div>
-          <div className="font-bold text-lg">$4.766</div>
+          <div className="font-bold text-lg">${0}</div>
         </div>
         <div className="flex flex-col w-full items-center">
           <div>Total Income</div>
-          <div className="font-bold text-lg">$9.909</div>
+          <div className="font-bold text-lg">${0}</div>
         </div>
       </div>
       <div className="flex flex-row w-full justify-around gap-10 items-center">

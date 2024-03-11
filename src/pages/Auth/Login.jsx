@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await login(data).unwrap();
-      dispatch(setCredentials({ _id: res._id, email: res.email, username: res.username }));
+      dispatch(setCredentials({ _id: res._id, email: res.email, username: res.username, roles: res.roles }));
       dispatch(setAccountInfo(res));
       toast.success(`Successfully logged in`);
       navigate("/account");
