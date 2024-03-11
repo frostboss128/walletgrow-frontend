@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useGetWalletInfoQuery, useWithdrawWalletMutation } from "../../slices/walletApiSlice";
+import { useProfileQuery } from "../../slices/usersApiSlice";
 import { ArrowLeftCircle, Headset, ArrowUpRightSquare, CheckCircle, CreditCard } from "lucide-react";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
+import { toast } from "sonner";
 
 const Withdraw = () => {
+  const {
+    data: walletInfo,
+    isLoading: walletInfoLoading,
+    isError: walletInfoIsError,
+    refetch: walletRefetch,
+  } = useGetWalletInfoQuery();
+  const { data: accountData, isLoading: accountLoading, refetch: accountRefetch } = useProfileQuery();
+  const [withdraw, { isLoading: withdrawLoading }] = useWithdrawWalletMutation();
+
+  const [data, setData] = useState({ address: "", coin: 0 });
+  const handleDataChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
+
+  const withdrawHandler = async (e) => {
+    e.preventDefault();
+    if (!data.address || !data.coin) return;
+    try {
+      const res = await withdraw(data).unwrap();
+      toast.success(res);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    } finally {
+      walletRefetch();
+      accountRefetch();
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="bg-primary text-gray-200 space-y-2">
@@ -24,9 +53,9 @@ const Withdraw = () => {
             <div>Wallet2</div>
             <div>Score: {"0"}</div>
           </div>
-          <div>
+          <div className="text-right">
             <div>Total Coin: {"0"}</div>
-            <div>COIN: {"35.35"}</div>
+            <div>COIN: {accountData?.coin}</div>
           </div>
         </div>
 
@@ -36,8 +65,8 @@ const Withdraw = () => {
             <div>X-Wallet Total Coin</div>
             <div>Daily reward upto 2.3%</div>
           </div>
-          <div>
-            <div>COIN: $18.711</div>
+          <div className="text-right">
+            <div>COIN: {walletInfo?.coin}</div>
             <div className="flex flex-row space-x-2">
               <Link to="/account/in">
                 <Button size="sm" className="bg-cyan-600 w-full">
@@ -81,21 +110,26 @@ const Withdraw = () => {
         </div>
       </div>
 
-      <div className="px-2 divide-y-2">
+      <div className="px-4 divide-y-2">
         <div className="px-4 pb-3 flex flex-row justify-between items-center space-x-2">
           <span>COIN</span>
-          <Input type="number" value={"18.1818"} disabled />
-          <Button type="submit" size="sm">
+          <Input type="number" value={walletInfo?.coin || 0} disabled className="text-gray-800 font-bold" />
+          <Button size="sm" onClick={(e) => walletRefetch()}>
             Refresh
           </Button>
         </div>
         <div className="p-3">
           <div>Enter Your TRC20 address</div>
-          <Input placeholder="Select your payment method" />
+          <Input placeholder="Select your payment method" name="address" onChange={handleDataChange} />
         </div>
         <div className="p-3">
           <div>Withdraw Coin :</div>
-          <Input type="number" placeholder="Enter withdraw amount" />
+          <Input type="number" placeholder="Enter withdraw amount" name="coin" onChange={handleDataChange} />
+          <div className="py-2">
+            <Button type="submit" className="w-full" onClick={withdrawHandler}>
+              Withdraw
+            </Button>
+          </div>
         </div>
       </div>
 

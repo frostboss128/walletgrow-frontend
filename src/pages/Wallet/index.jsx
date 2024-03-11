@@ -3,6 +3,7 @@ import { HelpCircle, CircleUserRound, LogOut } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../slices/authSlice";
 import { useLogoutMutation } from "../../slices/usersApiSlice";
+import { useGetWalletInfoQuery } from "../../slices/walletApiSlice";
 import { Link } from "react-router-dom";
 import FutureCard from "./FutureCard";
 import WalletInfo from "./WalletInfo";
@@ -11,7 +12,8 @@ import { toast } from "sonner";
 const Wallet = () => {
   const dispatch = useDispatch();
   const { userinfo } = useSelector(({ auth }) => auth);
-  const [logoutApiCall, { isLoading }] = useLogoutMutation();
+  const [logoutApiCall, { isLoading: logoutLoading }] = useLogoutMutation();
+  const { data: walletInfo, isLoading: walletInfoLoading, isError: walletInfoIsError } = useGetWalletInfoQuery();
 
   const logOutHandler = async (e) => {
     e.preventDefault();
@@ -35,7 +37,7 @@ const Wallet = () => {
           <div>LEVEL</div>
           <LogOut onClick={logOutHandler} />
         </div>
-        <WalletInfo />
+        <WalletInfo walletInfo={walletInfo} />
       </div>
       <div className="px-4 sm:px-20">
         <div className="flex flex-row justify-between w-full items-center px-8 mt-12 sm:mt-20 font-bold text-2xl text-gray-600">

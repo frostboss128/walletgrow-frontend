@@ -28,6 +28,7 @@ const In = lazy(() => import("../pages/Account/In"));
 const Withdraw = lazy(() => import("../pages/Account/Withdraw"));
 const Service = lazy(() => import("../pages/Account/Service"));
 const RechargeRecord = lazy(() => import("../pages/Account/RechargeRecord"));
+const WithdrawRecord = lazy(() => import("../pages/Account/WithdrawRecord"));
 
 const NotFound = lazy(() => import("../pages/NotFound"));
 const WillReturn = lazy(() => import("../pages/WillReturn"));
@@ -160,6 +161,11 @@ const router = createBrowserRouter([
             path: "/account/recharge_record",
             exact: true,
             element: <RechargeRecord />,
+          },
+          {
+            path: "/account/withdraw_record",
+            exact: true,
+            element: <WithdrawRecord />,
           },
           {
             path: "/account/service",

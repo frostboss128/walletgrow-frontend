@@ -5,15 +5,15 @@ import formatTime from "../../../utils/formatTime";
 const RechargeList = ({ recharge }) => {
   return (
     <div className="pt-2">
-      <div className="flex flex-row gap-2 items-stretch pb-2">
-        <div className="flex items-center">
+      <div className="grid grid-cols-12 gap-2 items-stretch pb-2">
+        <div className="col-span-2 flex items-center">
           <img src={`/images/account/${recharge.type}.svg`} alt="type logo" width={50} height={50} />
         </div>
-        <div className="flex-grow flex flex-col">
+        <div className="col-span-7 flex flex-col">
           <div className="font-medium">{recharge.transactionId}</div>
           <div className="text-sm">{formatTime(recharge.created_at)}</div>
         </div>
-        <div className="text-right">
+        <div className="col-span-3 text-right">
           <div
             className={clsx(
               "font-medium",

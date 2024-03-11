@@ -26,7 +26,7 @@ const Out = () => {
 
   return (
     <>
-      <HeaderBar to="/account" title="In" />
+      <HeaderBar to="/account" title="Out" />
       <div className="px-4 mt-8 space-y-4">
         <div className="p-2 border rounded-lg">
           <h3 className="font-medium">Total in your X-Wallet</h3>

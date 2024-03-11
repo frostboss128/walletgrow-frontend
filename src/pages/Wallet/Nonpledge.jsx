@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeftCircle } from "lucide-react";
-import WalletInfo from "../WalletInfo";
-import { Button } from "../../../components/ui/button";
+import WalletInfo from "./WalletInfo";
+import { Button } from "../../components/ui/button";
 
-const Pledge = () => {
+const NonPledge = () => {
   return (
     <div>
       <div className="bg-cyan-400 px-6 py-2 font-bold text-lg text-gray-50 rounded-b-md text-center relative">
         <Link to="/wallet" className="absolute left-3">
           <ChevronLeftCircle />
         </Link>
-        <h2>Pledge</h2>
+        <h2>Non Pledge</h2>
       </div>
       <div className="px-4 sm:px-20 mt-8">
         <WalletInfo />
@@ -139,4 +139,4 @@ const Pledge = () => {
   );
 };
 
-export default Pledge;
+export default NonPledge;

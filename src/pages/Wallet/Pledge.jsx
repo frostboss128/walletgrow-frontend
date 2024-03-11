@@ -1,23 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ChevronLeftCircle } from "lucide-react";
-import WalletInfo from "../WalletInfo";
-import { Button } from "../../../components/ui/button";
+import { useGetWalletInfoQuery } from "../../slices/walletApiSlice";
+import WalletInfo from "./WalletInfo";
+import { Button } from "../../components/ui/button";
+import HeaderBar from "../../components/HeaderBar";
 
-const NonPledge = () => {
+const Pledge = () => {
+  const { data: walletInfo, isLoading: walletInfoLoading, isError: walletInfoIsError } = useGetWalletInfoQuery();
+
   return (
     <div>
-      <div className="bg-cyan-400 px-6 py-2 font-bold text-lg text-gray-50 rounded-b-md text-center relative">
-        <Link to="/wallet" className="absolute left-3">
-          <ChevronLeftCircle />
-        </Link>
-        <h2>Non Pledge</h2>
-      </div>
+      <HeaderBar to="/wallet" title="Pledge" />
+
       <div className="px-4 sm:px-20 mt-8">
-        <WalletInfo />
-
+        <WalletInfo walletInfo={walletInfo} />
         <img src="/images/wallet/pledge-logo.svg" alt="pledge-logo" width="100%" height={100} className="mt-8" />
-
         <div className="flex w-full justify-center py-6">
           <Button variant="destructive" className="text-xl min-w-[225px]">
             INCOME PERIOD
@@ -139,4 +135,4 @@ const NonPledge = () => {
   );
 };
 
-export default NonPledge;
+export default Pledge;
