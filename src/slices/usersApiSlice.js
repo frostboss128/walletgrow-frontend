@@ -60,9 +60,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     updateUser: builder.mutation({
-      query: (userId) => ({
+      query: ({ userId, data }) => ({
         url: `${USER_URL}/${userId}`,
         method: "PUT",
+        body: data,
       }),
     }),
     deleteUser: builder.mutation({

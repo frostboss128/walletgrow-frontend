@@ -123,7 +123,7 @@ const Users = () => {
                   (query.sortDirection === 1 ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />)}
               </div>
             </TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            {/* <TableHead className="text-right">Actions</TableHead> */}
           </TableRow>
         </TableHeader>
         <TableBody>
