@@ -42,8 +42,6 @@ const Header = ({ onNavChange }) => {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-28">
-            {/* <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
-            <DropdownMenuSeparator /> */}
             <DropdownMenuRadioGroup value={value} onValueChange={onValueChange}>
               <DropdownMenuRadioItem value="users">Users</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="recharges">Recharges</DropdownMenuRadioItem>

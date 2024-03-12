@@ -5,11 +5,21 @@ import {
   useUpdateRechargeMutation,
   useDeleteRechargeMutation,
 } from "../../../slices/accountApiSlice";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../../../components/ui/select";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Button } from "../../../components/ui/button";
 import { toast } from "sonner";
 import { formatLocalTime } from "../../../utils/formatTime";
+import { clsx } from "clsx/lite";
 
 const RechargeDetail = () => {
   const navigate = useNavigate();
@@ -18,12 +28,12 @@ const RechargeDetail = () => {
     data: rechargeDetail,
     isLoading: rechargeDetailLoading,
     isError: rechargeDetailError,
+    refetch,
   } = useGetRechargeQuery(rechargeId);
   const [data, setData] = useState({});
 
   useEffect(() => {
-    if (rechargeDetail) setData(rechargeDetail);
-    console.log(rechargeDetail);
+    if (rechargeDetail) setData({ status: rechargeDetail.status, userId: rechargeDetail.user._id });
   }, [rechargeDetail]);
 
   const changeHandler = (e) => setData({ ...data, [e.target.name]: e.target.value });
@@ -33,17 +43,20 @@ const RechargeDetail = () => {
 
   const updateRechargeHandler = async (e) => {
     e.preventDefault();
-    console.log(data);
     try {
+      await updateRecharge({ rechargeId, data }).unwrap();
       toast.success(`Updated successfully`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+    } finally {
+      refetch();
     }
   };
 
   const deleteRechargeHandler = async (e) => {
     e.preventDefault();
     try {
+      await deleteRecharge(rechargeId).unwrap();
       toast.success(`Deleted successfully`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -84,7 +97,31 @@ const RechargeDetail = () => {
       </div>
       <div className="">
         <Label htmlFor="status">Status</Label>
-        <Input type="select" defaultValue={rechargeDetail?.status} name="verified" onChange={changeHandler} />
+        <Select value={data?.status} onValueChange={(value) => setData({ ...data, status: value })}>
+          <SelectTrigger
+            className={clsx(
+              "w-28",
+              data?.status === "Approved" && "text-green-600",
+              data?.status === "Pending" && "text-sky-500",
+              data?.status === "Failed" && "text-red-600"
+            )}
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value="Approved" className="text-green-600">
+                Approved
+              </SelectItem>
+              <SelectItem value="Pending" className="text-sky-600">
+                Pending
+              </SelectItem>
+              <SelectItem value="Failed" className="text-red-600">
+                Failed
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className=""></div>
       <div className="created_at">

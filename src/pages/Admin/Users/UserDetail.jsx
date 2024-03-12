@@ -10,7 +10,7 @@ import { formatLocalTime } from "../../../utils/formatTime";
 const UserDetail = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
-  const { data: userDetail, isLoading: userDetailLoading, isError: userDetailError } = useGetUserQuery(userId);
+  const { data: userDetail, isLoading: userDetailLoading, isError: userDetailError, refetch } = useGetUserQuery(userId);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -30,6 +30,8 @@ const UserDetail = () => {
       toast.success(`Updated successfully`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+    } finally {
+      refetch();
     }
   };
 
