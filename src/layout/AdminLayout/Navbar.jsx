@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <>
+    <div className="overflow-hidden">
       <div className="text-center py-4">
         <h1 className="text-3xl font-bold">WalletGrow Admin</h1>
       </div>
@@ -23,7 +23,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 

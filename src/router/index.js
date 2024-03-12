@@ -39,6 +39,7 @@ const WillReturn = lazy(() => import("../pages/WillReturn"));
 // AdminPages
 const Dashboard = lazy(() => import("../pages/Admin/Dashboard"));
 const Users = lazy(() => import("../pages/Admin/Users"));
+const UserDetail = lazy(() => import("../pages/Admin/Users/UserDetail"));
 const AdminRecharges = lazy(() => import("../pages/Admin/Recharges"));
 const AdminWithdraw = lazy(() => import("../pages/Admin/Withdraws"));
 const AdminHistory = lazy(() => import("../pages/Admin/History"));
@@ -204,6 +205,11 @@ const router = createBrowserRouter([
             path: "/admin/users",
             exact: true,
             element: <Users />,
+          },
+          {
+            path: "/admin/users/:userId",
+            exact: true,
+            element: <UserDetail />,
           },
           {
             path: "/admin/recharges",
