@@ -2,7 +2,7 @@ import React from "react";
 
 const Recharges = () => {
   return (
-    <div>
+    <div className="p-4">
       <h1>Recharges</h1>
     </div>
   );

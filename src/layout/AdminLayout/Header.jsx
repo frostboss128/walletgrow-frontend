@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,8 +13,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
 import { Menu } from "lucide-react";
 
 const Header = ({ onNavChange }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const [value, setValue] = useState("users");
+
+  useEffect(() => {
+    if (location?.pathname) setValue(location.pathname.slice(7));
+  }, [location]);
 
   const onValueChange = (value) => {
     if (value === "logout") return;
