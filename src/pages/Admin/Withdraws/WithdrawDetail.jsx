@@ -44,8 +44,8 @@ const RechargeDetail = () => {
   const updateRechargeHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await updateRecharge({ rechargeId, data }).unwrap();
-      toast.success(res);
+      await updateRecharge({ rechargeId, data }).unwrap();
+      toast.success(`Updated successfully`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     } finally {
