@@ -11,7 +11,6 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Account"],
     }),
-
     getRechargeRecord: builder.query({
       query: () => ({
         url: `${ACCOUNT_URL}`,
@@ -20,7 +19,6 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Account"],
       keepUnusedDataFor: 5,
     }),
-
     inWallet: builder.mutation({
       query: (data) => ({
         url: `${ACCOUNT_URL}/in`,
@@ -29,78 +27,49 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Account"],
     }),
-
-    getAll: builder.query({
-      query: () => ({
-        url: ACCOUNT_URL,
+    getAllRecharges: builder.query({
+      query: (query) => ({
+        url: `${ACCOUNT_URL}/recharges`,
+        method: "GET",
+        params: query,
       }),
       keepUnusedDataFor: 5,
-      providesTags: ["List"],
+      providesTags: ["Account"],
     }),
-    getDetail: builder.query({
-      query: (listId) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
+    getRecharge: builder.query({
+      query: (rechargeId) => ({
+        url: `${ACCOUNT_URL}/${rechargeId}`,
+        method: "GET",
       }),
       keepUnusedDataFor: 5,
-      providesTags: ["List"],
+      providesTags: ["Account"],
     }),
-    updateList: builder.mutation({
-      query: ({ listId, status }) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
+    updateRecharge: builder.mutation({
+      query: ({ rechargeId, data }) => ({
+        url: `${ACCOUNT_URL}/${rechargeId}`,
         method: "PUT",
-        body: { status },
-      }),
-      providesTags: ["List"],
-    }),
-    deleteList: builder.mutation({
-      query: (listId) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
-        method: "DELETE",
-      }),
-      providesTags: ["List"],
-    }),
-    addProduct: builder.mutation({
-      query: ({ listId, data }) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
-        method: "POST",
         body: data,
       }),
-      providesTags: ["Products"],
+      keepUnusedDataFor: 5,
+      providesTags: ["Account"],
     }),
-    updateProduct: builder.mutation({
-      query: ({ listId, productId, status }) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
-        method: "PUT",
-        body: { status },
-        params: { productId },
-      }),
-      providesTags: ["Products"],
-    }),
-    removeProduct: builder.mutation({
-      query: ({ listId, productId }) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
+    deleteRecharge: builder.mutation({
+      query: (rechargeId) => ({
+        url: `${ACCOUNT_URL}/${rechargeId}`,
         method: "DELETE",
-        params: { productId },
       }),
-      providesTags: ["Product"],
-    }),
-    addMember: builder.mutation({
-      query: ({ listId, userId }) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
-        method: "POST",
-        params: { userId },
-      }),
-      providesTags: ["Member"],
-    }),
-    removeMember: builder.mutation({
-      query: ({ listId, userId }) => ({
-        url: `${ACCOUNT_URL}/${listId}`,
-        method: "DELETE",
-        params: { userId },
-      }),
-      providesTags: ["Member"],
+      keepUnusedDataFor: 5,
+      providesTags: ["Account"],
     }),
   }),
 });
 
-export const { useRechargeToAccountMutation, useGetRechargeRecordQuery, useInWalletMutation } = accountApiSlice;
+export const {
+  useRechargeToAccountMutation,
+  useGetRechargeRecordQuery,
+  useInWalletMutation,
+  useGetAllRechargesQuery,
+  useGetRechargeQuery,
+  useUpdateRechargeMutation,
+  useDeleteRechargeMutation,
+} = accountApiSlice;
