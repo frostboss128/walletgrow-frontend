@@ -43,6 +43,7 @@ const UserDetail = lazy(() => import("../pages/Admin/Users/UserDetail"));
 const AdminRecharges = lazy(() => import("../pages/Admin/Recharges"));
 const AdminRechargesDetail = lazy(() => import("../pages/Admin/Recharges/RechargeDetail"));
 const AdminWithdraw = lazy(() => import("../pages/Admin/Withdraws"));
+const AdminWithdrawDetail = lazy(() => import("../pages/Admin/Withdraws/WithdrawDetail"));
 const AdminHistory = lazy(() => import("../pages/Admin/History"));
 
 const router = createBrowserRouter([
@@ -226,6 +227,11 @@ const router = createBrowserRouter([
             path: "/admin/withdraws",
             exact: true,
             element: <AdminWithdraw />,
+          },
+          {
+            path: "/admin/withdraws/:withdrawId",
+            exact: true,
+            element: <AdminWithdrawDetail />,
           },
           {
             path: "/admin/history",

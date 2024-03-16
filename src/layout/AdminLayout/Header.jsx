@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../slices/authSlice";
+import { useLogoutMutation } from "../../slices/usersApiSlice";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +14,10 @@ import {
 } from "../../components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
 import { Menu } from "lucide-react";
+import { toast } from "sonner";
 
 const Header = ({ onNavChange }) => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const [value, setValue] = useState("users");
@@ -21,8 +26,14 @@ const Header = ({ onNavChange }) => {
     if (location?.pathname) setValue(location.pathname.slice(7));
   }, [location]);
 
-  const onValueChange = (value) => {
-    if (value === "logout") return;
+  const [logoutApiCall, { isLoading: logoutLoading }] = useLogoutMutation();
+
+  const onValueChange = async value => {
+    if (value === "logout") {
+      await logoutApiCall();
+      dispatch(logout());
+      return toast.success(`logged out`);
+    }
     setValue(value);
     navigate(value);
   };

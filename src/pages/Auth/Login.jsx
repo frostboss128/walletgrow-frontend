@@ -17,14 +17,13 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
 
   const [data, setData] = useState({ email: "", password: "" });
-  const handleChange = (e) => setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
+  const handleChange = e => setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
 
-  const handleLogin = async (e) => {
+  const handleLogin = async e => {
     e.preventDefault();
     try {
       const res = await login(data).unwrap();
       dispatch(setCredentials({ _id: res._id, email: res.email, username: res.username, roles: res.roles }));
-      dispatch(setAccountInfo(res));
       toast.success(`Successfully logged in`);
       navigate("/account");
     } catch (err) {

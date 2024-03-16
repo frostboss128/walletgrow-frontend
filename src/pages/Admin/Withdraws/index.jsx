@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetAllRechargesQuery } from "../../../slices/accountApiSlice";
+import { useGetAllWithdrawsQuery } from "../../../slices/walletApiSlice";
 import {
   Table,
   TableBody,
@@ -32,28 +32,28 @@ import { ScrollArea } from "../../../components/ui/scroll-area";
 import WithdrawList from "./WithdrawList";
 import { SkipBack, SkipForward, ArrowUpWideNarrow, ArrowDownWideNarrow, FilePenLine, Trash2 } from "lucide-react";
 
-const Recharges = () => {
+const Withdraws = () => {
   const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
-  const { data: rechargeData, isLoading, isError, error } = useGetAllRechargesQuery({ ...query });
+  const { data: withdrawData, isLoading, isError, error } = useGetAllWithdrawsQuery({ ...query });
 
-  const sortHandler = (e) => {
+  const sortHandler = e => {
     e.preventDefault();
     e.stopPropagation();
     if (e.currentTarget.id === query.sort) setQuery({ ...query, sortDirection: -1 * query.sortDirection });
     else setQuery({ ...query, sort: e.currentTarget.id, sortDirection: 1 });
   };
 
-  const pageHandler = (page) => setQuery({ ...query, page });
+  const pageHandler = page => setQuery({ ...query, page });
 
-  const previousPageHandler = (e) => {
+  const previousPageHandler = e => {
     e.preventDefault();
     if (query.page <= 1) return;
     setQuery({ ...query, page: query.page - 1 });
   };
 
-  const nextPageHandler = (e) => {
+  const nextPageHandler = e => {
     e.preventDefault();
-    if (query.page >= rechargeData.pages) return;
+    if (query.page >= withdrawData.pages) return;
     setQuery({ ...query, page: query.page + 1 });
   };
 
@@ -75,12 +75,6 @@ const Recharges = () => {
               </div>
             </TableHead>
             <TableHead>
-              <div name="type" id="type" onClick={sortHandler} className="flex flex-row w-full items-center space-x-2">
-                <span>Type</span>
-                {query.sort === "type" && (query.sortDirection === 1 ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />)}
-              </div>
-            </TableHead>
-            <TableHead>
               <div
                 name="binance"
                 id="binance"
@@ -94,13 +88,25 @@ const Recharges = () => {
             </TableHead>
             <TableHead>
               <div
-                name="transactionId"
-                id="transactionId"
+                name="address"
+                id="address"
                 onClick={sortHandler}
                 className="flex flex-row w-full items-center space-x-2"
               >
-                <span>TransactionId</span>
-                {query.sort === "transactionId" &&
+                <span>Address</span>
+                {query.sort === "address" &&
+                  (query.sortDirection === 1 ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />)}
+              </div>
+            </TableHead>
+            <TableHead>
+              <div
+                name="status"
+                id="status"
+                onClick={sortHandler}
+                className="flex flex-row w-full items-center space-x-2"
+              >
+                <span>Status</span>
+                {query.sort === "status" &&
                   (query.sortDirection === 1 ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />)}
               </div>
             </TableHead>
@@ -116,32 +122,20 @@ const Recharges = () => {
                   (query.sortDirection === 1 ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />)}
               </div>
             </TableHead>
-            <TableHead>
-              <div
-                name="status"
-                id="status"
-                onClick={sortHandler}
-                className="flex flex-row w-full justify-end items-center space-x-2"
-              >
-                <span>Status</span>
-                {query.sort === "status" &&
-                  (query.sortDirection === 1 ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />)}
-              </div>
-            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {rechargeData?.recharges?.map((recharge) => (
-            <WithdrawList recharge={recharge} key={recharge._id} />
+          {withdrawData?.withdraws?.map(withdraw => (
+            <WithdrawList withdraw={withdraw} key={withdraw._id} />
           ))}
         </TableBody>
         <TableFooter>
           <TableRow>
             <TableCell colSpan={4}>
               <div className="flex flex-row w-full justify-between space-x-4">
-                <div>Total : {rechargeData?.total || 0}</div>
-                <div className="flex-grow">Pages: {rechargeData?.pages || 1}</div>
-                <Select onValueChange={(e) => setQuery({ ...query, pageSize: e })}>
+                <div>Total : {withdrawData?.total || 0}</div>
+                <div className="flex-grow">Pages: {withdrawData?.pages || 1}</div>
+                <Select onValueChange={e => setQuery({ ...query, pageSize: e })}>
                   <SelectTrigger className="w-20">
                     <SelectValue placeholder={query.pageSize} />
                   </SelectTrigger>
@@ -160,7 +154,7 @@ const Recharges = () => {
             <TableCell colSpan={2}>
               <Pagination className="justify-end *:hover:cursor-pointer">
                 <PaginationContent>
-                  <PaginationItem onClick={(e) => pageHandler(1)}>
+                  <PaginationItem onClick={e => pageHandler(1)}>
                     <SkipBack />
                   </PaginationItem>
                   <PaginationItem onClick={previousPageHandler}>
@@ -172,7 +166,7 @@ const Recharges = () => {
                   <PaginationItem onClick={nextPageHandler}>
                     <PaginationNext />
                   </PaginationItem>
-                  <PaginationItem onClick={(e) => pageHandler(rechargeData.pages)}>
+                  <PaginationItem onClick={e => pageHandler(withdrawData.pages)}>
                     <SkipForward />
                   </PaginationItem>
                 </PaginationContent>
@@ -185,4 +179,4 @@ const Recharges = () => {
   );
 };
 
-export default Recharges;
+export default Withdraws;

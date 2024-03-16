@@ -2,9 +2,9 @@ import { ACCOUNT_URL } from "../services/constants";
 import { apiSlice } from "./apiSlice";
 
 export const accountApiSlice = apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     rechargeToAccount: builder.mutation({
-      query: (data) => ({
+      query: data => ({
         url: ACCOUNT_URL,
         method: "POST",
         body: data,
@@ -20,7 +20,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
     inWallet: builder.mutation({
-      query: (data) => ({
+      query: data => ({
         url: `${ACCOUNT_URL}/in`,
         method: "POST",
         body: data,
@@ -28,7 +28,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Account"],
     }),
     getAllRecharges: builder.query({
-      query: (query) => ({
+      query: query => ({
         url: `${ACCOUNT_URL}/recharges`,
         method: "GET",
         params: query,
@@ -37,7 +37,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Account"],
     }),
     getRecharge: builder.query({
-      query: (rechargeId) => ({
+      query: rechargeId => ({
         url: `${ACCOUNT_URL}/${rechargeId}`,
         method: "GET",
       }),
@@ -50,13 +50,19 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body: data,
       }),
-      keepUnusedDataFor: 5,
       providesTags: ["Account"],
     }),
     deleteRecharge: builder.mutation({
-      query: (rechargeId) => ({
+      query: rechargeId => ({
         url: `${ACCOUNT_URL}/${rechargeId}`,
         method: "DELETE",
+      }),
+      providesTags: ["Account"],
+    }),
+    getHistory: builder.query({
+      query: () => ({
+        url: `${ACCOUNT_URL}/history`,
+        method: "GET",
       }),
       keepUnusedDataFor: 5,
       providesTags: ["Account"],
@@ -72,4 +78,5 @@ export const {
   useGetRechargeQuery,
   useUpdateRechargeMutation,
   useDeleteRechargeMutation,
+  useGetHistoryQuery,
 } = accountApiSlice;

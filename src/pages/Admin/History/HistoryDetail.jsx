@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  useGetWithdrawQuery,
-  useUpdateWithdrawMutation,
-  useDeleteWithdrawMutation,
-} from "../../../slices/walletApiSlice";
+  useGetRechargeQuery,
+  useUpdateRechargeMutation,
+  useDeleteRechargeMutation,
+} from "../../../slices/accountApiSlice";
 import {
   Select,
   SelectContent,
@@ -21,30 +21,30 @@ import { toast } from "sonner";
 import { formatLocalTime } from "../../../utils/formatTime";
 import { clsx } from "clsx/lite";
 
-const WithdrawDetail = () => {
+const RechargeDetail = () => {
   const navigate = useNavigate();
-  const { withdrawId } = useParams();
+  const { rechargeId } = useParams();
   const {
-    data: withdrawDetail,
-    isLoading: withdrawDetailLoading,
-    isError: withdrawDetailError,
+    data: rechargeDetail,
+    isLoading: rechargeDetailLoading,
+    isError: rechargeDetailError,
     refetch,
-  } = useGetWithdrawQuery(withdrawId);
+  } = useGetRechargeQuery(rechargeId);
   const [data, setData] = useState({});
 
   useEffect(() => {
-    if (withdrawDetail) setData({ status: withdrawDetail.status, userId: withdrawDetail.user._id });
-  }, [withdrawDetail]);
+    if (rechargeDetail) setData({ status: rechargeDetail.status, userId: rechargeDetail.user._id });
+  }, [rechargeDetail]);
 
-  const changeHandler = e => setData({ ...data, [e.target.name]: e.target.value });
+  const changeHandler = (e) => setData({ ...data, [e.target.name]: e.target.value });
 
-  const [updateWithdraw, { isLoading: updateWithdrawLoading }] = useUpdateWithdrawMutation();
-  const [deleteWithdraw, { isLoading: deleteWithdrawLoading }] = useDeleteWithdrawMutation();
+  const [updateRecharge, { isLoading: updateRechargeLoading }] = useUpdateRechargeMutation();
+  const [deleteRecharge, { isLoading: deleteRechargeLoading }] = useDeleteRechargeMutation();
 
-  const updateWithdrawHandler = async e => {
+  const updateRechargeHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await updateWithdraw({ withdrawId, data }).unwrap();
+      const res = await updateRecharge({ rechargeId, data }).unwrap();
       toast.success(res);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -53,10 +53,10 @@ const WithdrawDetail = () => {
     }
   };
 
-  const deleteWithdrawHandler = async e => {
+  const deleteRechargeHandler = async (e) => {
     e.preventDefault();
     try {
-      await deleteWithdraw(withdrawId).unwrap();
+      await deleteRecharge(rechargeId).unwrap();
       toast.success(`Deleted successfully`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -69,19 +69,35 @@ const WithdrawDetail = () => {
     <div className="grid grid-cols-2 gap-6 p-6">
       <div className="">
         <Label htmlFor="email">Email</Label>
-        <Input type="email" defaultValue={withdrawDetail?.user?.email} name="email" onChange={changeHandler} disabled />
+        <Input type="email" defaultValue={rechargeDetail?.user?.email} name="email" onChange={changeHandler} disabled />
+      </div>
+      <div className="">
+        <Label htmlFor="type">Type</Label>
+        <Input
+          type="text"
+          defaultValue={rechargeDetail?.type?.toUpperCase()}
+          name="type"
+          onChange={changeHandler}
+          disabled
+        />
       </div>
       <div className="">
         <Label htmlFor="binance">Binance</Label>
-        <Input type="number" defaultValue={withdrawDetail?.coin} name="binance" onChange={changeHandler} disabled />
+        <Input type="number" defaultValue={rechargeDetail?.coin} name="binance" onChange={changeHandler} disabled />
       </div>
       <div className="">
-        <Label htmlFor="address">Address</Label>
-        <Input type="text" defaultValue={withdrawDetail?.address} name="address" onChange={changeHandler} disabled />
+        <Label htmlFor="transactionId">TransactionId</Label>
+        <Input
+          type="text"
+          defaultValue={rechargeDetail?.transactionId}
+          name="transactionId"
+          onChange={changeHandler}
+          disabled
+        />
       </div>
       <div className="">
         <Label htmlFor="status">Status</Label>
-        <Select value={data?.status} onValueChange={value => setData({ ...data, status: value })}>
+        <Select value={data?.status} onValueChange={(value) => setData({ ...data, status: value })}>
           <SelectTrigger
             className={clsx(
               "w-28",
@@ -107,11 +123,12 @@ const WithdrawDetail = () => {
           </SelectContent>
         </Select>
       </div>
+      <div className=""></div>
       <div className="created_at">
         <Label htmlFor="created_at">Created</Label>
         <Input
           type="datetime-local"
-          defaultValue={formatLocalTime(withdrawDetail?.created_at)}
+          defaultValue={formatLocalTime(rechargeDetail?.created_at)}
           name="created_at"
           disabled
         />
@@ -120,20 +137,20 @@ const WithdrawDetail = () => {
         <Label htmlFor="updated_at">Updated</Label>
         <Input
           type="datetime-local"
-          defaultValue={formatLocalTime(withdrawDetail?.updated_at)}
+          defaultValue={formatLocalTime(rechargeDetail?.updated_at)}
           name="updated_at"
           disabled
         />
       </div>
 
       <div className="">
-        <Button className="w-full" onClick={updateWithdrawHandler}>
+        <Button className="w-full" onClick={updateRechargeHandler}>
           Update
         </Button>
       </div>
 
       <div className="">
-        <Button className="w-full" onClick={deleteWithdrawHandler}>
+        <Button className="w-full" onClick={deleteRechargeHandler}>
           Delete
         </Button>
       </div>
@@ -141,4 +158,4 @@ const WithdrawDetail = () => {
   );
 };
 
-export default WithdrawDetail;
+export default RechargeDetail;

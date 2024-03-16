@@ -19,15 +19,14 @@ const Register = () => {
   const [data, setData] = useState({ email: "", username: "", password: "", password2: "", code: "" });
   const [disabled, setDisabled] = useState(true);
 
-  const handleChange = (e) => setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
-  const handleCheckChange = (value) => setDisabled(!value);
+  const handleChange = e => setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
+  const handleCheckChange = value => setDisabled(!value);
 
-  const handleRegister = async (e) => {
+  const handleRegister = async e => {
     e.preventDefault();
     try {
       const res = await register(data).unwrap();
       dispatch(setCredentials(res));
-      dispatch(setAccountInfo(res));
       toast.success(`Successfully registered`);
       navigate("/account");
     } catch (err) {

@@ -36,22 +36,22 @@ const Recharges = () => {
   const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
   const { data: rechargeData, isLoading, isError, error } = useGetAllRechargesQuery({ ...query });
 
-  const sortHandler = (e) => {
+  const sortHandler = e => {
     e.preventDefault();
     e.stopPropagation();
     if (e.currentTarget.id === query.sort) setQuery({ ...query, sortDirection: -1 * query.sortDirection });
     else setQuery({ ...query, sort: e.currentTarget.id, sortDirection: 1 });
   };
 
-  const pageHandler = (page) => setQuery({ ...query, page });
+  const pageHandler = page => setQuery({ ...query, page });
 
-  const previousPageHandler = (e) => {
+  const previousPageHandler = e => {
     e.preventDefault();
     if (query.page <= 1) return;
     setQuery({ ...query, page: query.page - 1 });
   };
 
-  const nextPageHandler = (e) => {
+  const nextPageHandler = e => {
     e.preventDefault();
     if (query.page >= rechargeData.pages) return;
     setQuery({ ...query, page: query.page + 1 });
@@ -131,7 +131,7 @@ const Recharges = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {rechargeData?.recharges?.map((recharge) => (
+          {rechargeData?.recharges?.map(recharge => (
             <RechargeList recharge={recharge} key={recharge._id} />
           ))}
         </TableBody>
@@ -141,7 +141,7 @@ const Recharges = () => {
               <div className="flex flex-row w-full justify-between space-x-4">
                 <div>Total : {rechargeData?.total || 0}</div>
                 <div className="flex-grow">Pages: {rechargeData?.pages || 1}</div>
-                <Select onValueChange={(e) => setQuery({ ...query, pageSize: e })}>
+                <Select onValueChange={e => setQuery({ ...query, pageSize: e })}>
                   <SelectTrigger className="w-20">
                     <SelectValue placeholder={query.pageSize} />
                   </SelectTrigger>
@@ -160,7 +160,7 @@ const Recharges = () => {
             <TableCell colSpan={2}>
               <Pagination className="justify-end *:hover:cursor-pointer">
                 <PaginationContent>
-                  <PaginationItem onClick={(e) => pageHandler(1)}>
+                  <PaginationItem onClick={e => pageHandler(1)}>
                     <SkipBack />
                   </PaginationItem>
                   <PaginationItem onClick={previousPageHandler}>
@@ -172,7 +172,7 @@ const Recharges = () => {
                   <PaginationItem onClick={nextPageHandler}>
                     <PaginationNext />
                   </PaginationItem>
-                  <PaginationItem onClick={(e) => pageHandler(rechargeData.pages)}>
+                  <PaginationItem onClick={e => pageHandler(rechargeData.pages)}>
                     <SkipForward />
                   </PaginationItem>
                 </PaginationContent>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useProfileQuery } from "../../slices/usersApiSlice";
 import { useGetWalletInfoQuery } from "../../slices/walletApiSlice";
 import { Headset, ArrowUpRightSquare, CheckCircle, CreditCard, Rocket, MessageCircleQuestion } from "lucide-react";
 import { Card } from "../../components/ui/card";
@@ -9,7 +10,7 @@ import { Button } from "../../components/ui/button";
 import { Coins } from "lucide-react";
 
 const Account = () => {
-  const { accountInfo } = useSelector(({ account }) => account);
+  const { data: accountInfo, isLoading: accountInfoLoading, refetch: accountInfoRefetch } = useProfileQuery();
   const { data: walletInfo, isLoading: walletLoading, refetch: walletInfoRefetch } = useGetWalletInfoQuery();
 
   return (
