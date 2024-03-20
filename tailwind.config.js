@@ -25,6 +25,15 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    animatedSettings: {
+      animatedSpeed: 1000,
+      heartBeatSpeed: 500,
+      hingeSpeed: 2000,
+      bounceInSpeed: 750,
+      bounceOutSpeed: 750,
+      animationDelaySpeed: 500,
+      classes: ["bounce", "heartBeat"],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -79,6 +88,18 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        marquee: "marquee 25s linear infinite",
+        marquee2: "marquee2 25s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
       },
     },
   },
