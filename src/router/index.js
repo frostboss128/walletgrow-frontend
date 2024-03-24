@@ -32,6 +32,8 @@ const Service = lazy(() => import("../pages/Account/Service"));
 const RechargeRecord = lazy(() => import("../pages/Account/RechargeRecord"));
 const WithdrawRecord = lazy(() => import("../pages/Account/WithdrawRecord"));
 const FinanceRecord = lazy(() => import("../pages/Account/FinanceRecord"));
+const CommissionRecord = lazy(() => import("../pages/Account/CommissionRecord"));
+const InvitedFriends = lazy(() => import("../pages/Account/InvitedFriends"));
 
 const NotFound = lazy(() => import("../pages/NotFound"));
 const WillReturn = lazy(() => import("../pages/WillReturn"));
@@ -72,6 +74,7 @@ const router = createBrowserRouter([
     exact: true,
     element: <MainLayout />,
     errorElement: <NotFound />,
+    // ErrorBoundary: <NotFound />,
     children: [
       {
         path: "/",
@@ -186,6 +189,16 @@ const router = createBrowserRouter([
             path: "/account/finance_record",
             exact: true,
             element: <FinanceRecord />,
+          },
+          {
+            path: "/account/commission_record",
+            exact: true,
+            element: <CommissionRecord />,
+          },
+          {
+            path: "/account/invited_friends",
+            exact: true,
+            element: <InvitedFriends />,
           },
           {
             path: "/account/service",

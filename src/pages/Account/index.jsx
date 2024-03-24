@@ -7,11 +7,36 @@ import { Headset, ArrowUpRightSquare, CheckCircle, CreditCard, Rocket, MessageCi
 import { Card } from "../../components/ui/card";
 import { Progress } from "../../components/ui/progress";
 import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "../../components/ui/dialog";
 import { Coins } from "lucide-react";
 
 const Account = () => {
   const { data: accountInfo, isLoading: accountInfoLoading, refetch: accountInfoRefetch } = useProfileQuery();
   const { data: walletInfo, isLoading: walletLoading, refetch: walletInfoRefetch } = useGetWalletInfoQuery();
+
+  const inviteLinkCopyHandler = async e => {
+    e.preventDefault();
+
+    try {
+      await navigator.clipboard.writeText(`https://walletgrow.io/auth/login?invited=${accountInfo.email}`);
+      alert(
+        `The invite link has been copied successfully:\n
+        https://walletgrow.io/auth/login?invited=${accountInfo.email}`
+      );
+    } catch (error) {
+      alert("something went wrong");
+    }
+  };
 
   return (
     <>
@@ -112,27 +137,56 @@ const Account = () => {
 
       <div className="space-y-4 mt-6 text-xs">
         <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 px-4 text-center">
-          <Link to="/account/messages">
+          <div>
+            <div className="flex justify-center items-center">
+              <img src="/images/account/message.svg" alt="message" width={25} />
+            </div>
+            <div>Message</div>
+          </div>
+          <Link to="/account/invited_friends">
             <div>
               <div className="flex justify-center items-center">
-                <img src="/images/account/message.svg" alt="message" width={25} />
+                <img src="/images/account/invite_friend.svg" alt="message" width={25} />
               </div>
-              <div>Message</div>
+              <div>Invited Friends</div>
             </div>
           </Link>
-          <div>
-            <div className="flex justify-center items-center">
-              <img src="/images/account/invite_friend.svg" alt="message" width={25} />
-            </div>
-            <div>Invite Friends</div>
-          </div>
-          <div>
-            <div className="flex justify-center items-center">
-              <img src="/images/account/invite_info.svg" alt="message" width={25} />
-            </div>
-            <div>Invite Info</div>
-          </div>
-          <Link to="/account/commission">
+          <Dialog>
+            <DialogTrigger asChild>
+              <div>
+                <div className="flex justify-center items-center">
+                  <img src="/images/account/invite_info.svg" alt="message" width={25} />
+                </div>
+                <div>Invite Info</div>
+              </div>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader className="overflow-hidden space-y-2">
+                <DialogTitle className="truncate space-y-2">Invited Info</DialogTitle>
+                <DialogDescription>You can click the qr code to copy the link.</DialogDescription>
+              </DialogHeader>
+              <div className="relative flex items-center">
+                <div className="flex-grow border-t border-gray-400"></div>
+                <span className="flex-shrink mx-4 text-gray-400">QR Code</span>
+                <div className="flex-grow border-t border-gray-400"></div>
+              </div>
+              <div className="grid place-content-center" onClick={inviteLinkCopyHandler}>
+                <img
+                  src={`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://walletgrow.io/auth/login?invited=${accountInfo?.email}`}
+                  alt="invite info qr code"
+                  width={200}
+                  height={200}
+                />
+              </div>
+              <div className="line-clamp-2">{`https://walletgrow.io/auth/login?invited=${accountInfo?.email}`}</div>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button>Close</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          <Link to="/account/commission_record">
             <div>
               <div className="flex justify-center items-center">
                 <img src="/images/account/commission.svg" alt="message" width={25} />
@@ -169,14 +223,12 @@ const Account = () => {
         <div className="h-5 bg-gray-100" />
 
         <div className="grid grid-cols-3 gap-4 px-4 text-center">
-          <Link to="/account/password">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/password.svg" alt="message" width={25} />
-              </div>
-              <div>Password</div>
+          <div>
+            <div className="flex justify-center items-center">
+              <img src="/images/account/password.svg" alt="message" width={25} />
             </div>
-          </Link>
+            <div>Password</div>
+          </div>
           <Link to="/account/service">
             <div>
               <div className="flex justify-center items-center">

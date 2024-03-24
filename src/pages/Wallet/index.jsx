@@ -42,7 +42,7 @@ const Wallet = () => {
             <CircleUserRound size={40} />
           </Link>
           <div className="flex-grow text-md sx:text-xl">{userinfo?.username}</div>
-          <div>LEVEL</div>
+          <div>Log out</div>
           <LogOut onClick={logOutHandler} />
         </div>
         <WalletInfo walletInfo={walletInfo} />
@@ -57,7 +57,8 @@ const Wallet = () => {
             <Plan key={invType._id} invType={invType} />
           ))}
         </div>
-        <div className="flex flex-row justify-between w-full items-center px-8 font-bold  text-2xl text-gray-600">
+
+        {/* <div className="flex flex-row justify-between w-full items-center px-8 font-bold  text-2xl text-gray-600">
           <div>Future</div>
           <HelpCircle />
         </div>
@@ -71,7 +72,7 @@ const Wallet = () => {
           <FutureCard src="/images/wallet/entertainment.svg" name="Entertainment" description="" type="Soon" />
           <FutureCard src="/images/wallet/savings.svg" name="Savings" description="" type="Soon" />
           <FutureCard src="/images/wallet/contact.svg" name="Contact" description="" type="Soon" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

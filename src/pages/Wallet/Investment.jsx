@@ -36,16 +36,17 @@ const Investment = () => {
     data: investmentType,
     isLoading: investmentTypeLoading,
     isError: investmentTypeIsError,
+    refetch: investmentTypeRefetch,
   } = useGetInvestmentTypeQuery(typeId);
   const [startInvestment, { isLoading: startInvestmentLoading, isError: startInvestmentIsError }] =
     useStartInvestmentMutation();
-  const { data: invest, isLoading: investLoading, isError: investIsError } = useGetInvestmentQuery(typeId);
+  const { data: invest, isLoading: investLoading, isError: investIsError, refetch } = useGetInvestmentQuery(typeId);
 
   const [data, setData] = useState({ amount: 50, option: 1 });
 
   useEffect(() => {
     if (invest?.coin) setData({ ...data, amount: invest.coin });
-  }, [invest.coin]);
+  }, [invest?.coin]);
 
   const startHandler = async e => {
     e.preventDefault();
@@ -53,11 +54,13 @@ const Investment = () => {
     if (data.amount < 50 || data.amount > parseFloat(walletInfo.coin)) return toast.warning("Invalid amount");
     try {
       const res = await startInvestment({ typeId, data }).unwrap();
-      console.log(res);
+      toast.success("New investment method has been started");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     } finally {
       walletInfoRefetch();
+      investmentTypeRefetch();
+      refetch();
     }
   };
 

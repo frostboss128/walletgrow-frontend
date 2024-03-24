@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetAllRechargesQuery } from "../../../slices/accountApiSlice";
 import {
   Table,
@@ -34,7 +34,11 @@ import { SkipBack, SkipForward, ArrowUpWideNarrow, ArrowDownWideNarrow, FilePenL
 
 const Recharges = () => {
   const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
-  const { data: rechargeData, isLoading, isError, error } = useGetAllRechargesQuery({ ...query });
+  const { data: rechargeData, isLoading, isError, error, refetch } = useGetAllRechargesQuery({ ...query });
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   const sortHandler = e => {
     e.preventDefault();

@@ -160,6 +160,18 @@ const Config = () => {
                   placeholder="Please input total duration months"
                 />
               </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="duration_description" className="text-right">
+                  Description
+                </Label>
+                <Input
+                  type="text"
+                  name="duration_description"
+                  className="col-span-3"
+                  onChange={handleNewDataChange}
+                  placeholder="Please input duration description"
+                />
+              </div>
             </div>
             <DialogFooter>
               <DialogClose asChild>

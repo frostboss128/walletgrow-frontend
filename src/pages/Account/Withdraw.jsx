@@ -18,9 +18,9 @@ const Withdraw = () => {
   const [withdraw, { isLoading: withdrawLoading }] = useWithdrawWalletMutation();
 
   const [data, setData] = useState({ address: "", coin: 0 });
-  const handleDataChange = (e) => setData({ ...data, [e.target.name]: e.target.value });
+  const handleDataChange = e => setData({ ...data, [e.target.name]: e.target.value });
 
-  const withdrawHandler = async (e) => {
+  const withdrawHandler = async e => {
     e.preventDefault();
     if (!data.address || !data.coin) return;
     try {
@@ -50,7 +50,7 @@ const Withdraw = () => {
 
         <div className="flex flex-row justify-between items-center px-4">
           <div>
-            <div>Wallet2</div>
+            <div>{accountData?.username}</div>
             <div>Score: {"0"}</div>
           </div>
           <div className="text-right">
@@ -114,7 +114,7 @@ const Withdraw = () => {
         <div className="px-4 pb-3 flex flex-row justify-between items-center space-x-2">
           <span>COIN</span>
           <Input type="number" value={walletInfo?.coin || 0} disabled className="text-gray-800 font-bold" />
-          <Button size="sm" onClick={(e) => walletRefetch()}>
+          <Button size="sm" onClick={e => walletRefetch()}>
             Refresh
           </Button>
         </div>

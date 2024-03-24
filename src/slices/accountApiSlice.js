@@ -59,9 +59,18 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Account"],
     }),
-    getFinances: builder.query({
+    getHistoryByType: builder.query({
+      query: type => ({
+        url: `${ACCOUNT_URL}/type`,
+        method: "GET",
+        params: { type },
+      }),
+      keepUnusedDataFor: 5,
+      providesTags: ["Account"],
+    }),
+    invitedFriends: builder.query({
       query: () => ({
-        url: `${ACCOUNT_URL}/finance`,
+        url: `${ACCOUNT_URL}/invite`,
         method: "GET",
       }),
       keepUnusedDataFor: 5,
@@ -86,6 +95,7 @@ export const {
   useGetRechargeQuery,
   useUpdateRechargeMutation,
   useDeleteRechargeMutation,
-  useGetFinancesQuery,
+  useGetHistoryByTypeQuery,
   useGetHistoryQuery,
+  useInvitedFriendsQuery,
 } = accountApiSlice;

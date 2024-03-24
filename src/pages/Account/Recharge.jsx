@@ -22,11 +22,11 @@ const address1 = "TVhHmraG3wuAWmEN5hVARUoDjqnhTQAJPE";
 const Recharge = () => {
   const [data, setData] = useState({ coin: 100, transactionId: "" });
 
-  const setCoinHandler = (e) => setData({ ...data, coin: parseInt(e.target.value) });
+  const setCoinHandler = e => setData({ ...data, coin: parseInt(e.target.value) });
 
   const [rechargeToAccount, { isLoading: recharegeLoading }] = useRechargeToAccountMutation();
 
-  const walletAddressCopyHandler = async (e) => {
+  const walletAddressCopyHandler = async e => {
     e.preventDefault();
     try {
       await navigator.clipboard.writeText(address1);
@@ -36,7 +36,7 @@ const Recharge = () => {
     }
   };
 
-  const transactionSubmitHandler = async (e) => {
+  const transactionSubmitHandler = async e => {
     if (isEmpty(data.transactionId)) return toast.error(`Transaction ID is required`);
     try {
       await rechargeToAccount({ ...data, type: e.target.name });
@@ -54,10 +54,10 @@ const Recharge = () => {
 
       <div className="flex flex-row items-center justify-between space-x-2 px-6">
         <div>Quantity</div>
-        <Input type="number" value={data.coin} onChange={(e) => setData({ ...data, coin: e.target.value })} disabled />
+        <Input type="number" value={data.coin} onChange={e => setData({ ...data, coin: e.target.value })} />
         <div className="flex flex-row items-center space-x-2">
-          <Button onClick={(e) => setData({ ...data, coin: data.coin + 1 })}>+</Button>
-          <Button onClick={(e) => setData({ ...data, coin: data.coin + 1000 })}>+K</Button>
+          <Button onClick={e => setData({ ...data, coin: data.coin + 1 })}>+</Button>
+          <Button onClick={e => setData({ ...data, coin: data.coin + 1000 })}>+K</Button>
         </div>
       </div>
       <div className="grid grid-cols-4 grid-rows-2 px-6 gap-2">
@@ -126,7 +126,7 @@ const Recharge = () => {
                 <p>COIN {data.coin}.</p>
                 <p className="text-sm">{address1}</p>
               </DialogTitle>
-              <DialogDescription>You can copy the address click the qr code.</DialogDescription>
+              <DialogDescription>You can click the qr code to copy the address.</DialogDescription>
             </DialogHeader>
             <div className="relative flex items-center">
               <div className="flex-grow border-t border-gray-400"></div>
@@ -146,7 +146,7 @@ const Recharge = () => {
                 id="transactionId"
                 placeholder="Transaction ID"
                 value={data.transactionId}
-                onChange={(e) => setData({ ...data, transactionId: e.target.value })}
+                onChange={e => setData({ ...data, transactionId: e.target.value })}
               />
             </div>
             <DialogFooter>
@@ -203,7 +203,7 @@ const Recharge = () => {
                 id="transactionId"
                 placeholder="Transaction ID"
                 value={data.transactionId}
-                onChange={(e) => setData({ ...data, transactionId: e.target.value })}
+                onChange={e => setData({ ...data, transactionId: e.target.value })}
               />
             </div>
             <DialogFooter>
