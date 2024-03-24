@@ -23,15 +23,14 @@ const Account = () => {
   const { data: accountInfo, isLoading: accountInfoLoading, refetch: accountInfoRefetch } = useProfileQuery();
   const { data: walletInfo, isLoading: walletLoading, refetch: walletInfoRefetch } = useGetWalletInfoQuery();
 
+  const inviteURL = "https://walletgrow.io/auth/register?invited=";
+
   const inviteLinkCopyHandler = async e => {
     e.preventDefault();
 
     try {
-      await navigator.clipboard.writeText(`https://walletgrow.io/auth/register?invited=${accountInfo.email}`);
-      alert(
-        `The invite link has been copied successfully:\n
-        https://walletgrow.io/auth/register?invited=${accountInfo.email}`
-      );
+      await navigator.clipboard.writeText(inviteURL + accountInfo.email);
+      alert(`The invite link has been copied successfully:\n` + inviteURL + accountInfo.email);
     } catch (error) {
       alert("something went wrong");
     }
@@ -171,13 +170,13 @@ const Account = () => {
               </div>
               <div className="grid place-content-center" onClick={inviteLinkCopyHandler}>
                 <img
-                  src={`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://walletgrow.io/auth/register?invited=${accountInfo?.email}`}
+                  src={`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=inviteURL${accountInfo?.email}`}
                   alt="invite info qr code"
                   width={200}
                   height={200}
                 />
               </div>
-              <div className="line-clamp-2">{`https://walletgrow.io/auth/register?invited=${accountInfo?.email}`}</div>
+              <div className="line-clamp-2">{`inviteURL${accountInfo?.email}`}</div>
               <DialogFooter>
                 <DialogClose asChild>
                   <Button>Close</Button>
