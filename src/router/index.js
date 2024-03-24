@@ -20,7 +20,7 @@ const Project = lazy(() => import("../pages/Project"));
 const Wallet = lazy(() => import("../pages/Wallet"));
 const RecordList = lazy(() => import("../pages/Wallet/RecordList"));
 const Pledge = lazy(() => import("../pages/Wallet/Pledge"));
-const Nonpledge = lazy(() => import("../pages/Wallet/Nonpledge"));
+const Investment = lazy(() => import("../pages/Wallet/Investment"));
 const Out = lazy(() => import("../pages/Wallet/Out"));
 
 // Account
@@ -31,6 +31,7 @@ const Withdraw = lazy(() => import("../pages/Account/Withdraw"));
 const Service = lazy(() => import("../pages/Account/Service"));
 const RechargeRecord = lazy(() => import("../pages/Account/RechargeRecord"));
 const WithdrawRecord = lazy(() => import("../pages/Account/WithdrawRecord"));
+const FinanceRecord = lazy(() => import("../pages/Account/FinanceRecord"));
 
 const NotFound = lazy(() => import("../pages/NotFound"));
 const WillReturn = lazy(() => import("../pages/WillReturn"));
@@ -45,6 +46,8 @@ const AdminRechargesDetail = lazy(() => import("../pages/Admin/Recharges/Recharg
 const AdminWithdraw = lazy(() => import("../pages/Admin/Withdraws"));
 const AdminWithdrawDetail = lazy(() => import("../pages/Admin/Withdraws/WithdrawDetail"));
 const AdminHistory = lazy(() => import("../pages/Admin/History"));
+const AdminConfig = lazy(() => import("../pages/Admin/Config"));
+const AdminConfigDetail = lazy(() => import("../pages/Admin/Config/ConfigDetail"));
 
 const router = createBrowserRouter([
   {
@@ -102,9 +105,9 @@ const router = createBrowserRouter([
             element: <Pledge />,
           },
           {
-            path: "/wallet/nonpledge",
+            path: "/wallet/investment/:typeId",
             exact: true,
-            element: <Nonpledge />,
+            element: <Investment />,
           },
           {
             path: "/wallet/out",
@@ -180,6 +183,11 @@ const router = createBrowserRouter([
             element: <WithdrawRecord />,
           },
           {
+            path: "/account/finance_record",
+            exact: true,
+            element: <FinanceRecord />,
+          },
+          {
             path: "/account/service",
             exact: true,
             element: <Service />,
@@ -237,6 +245,16 @@ const router = createBrowserRouter([
             path: "/admin/history",
             exact: true,
             element: <AdminHistory />,
+          },
+          {
+            path: "/admin/config",
+            exact: true,
+            element: <AdminConfig />,
+          },
+          {
+            path: "/admin/config/:typeId",
+            exact: true,
+            element: <AdminConfigDetail />,
           },
         ],
       },

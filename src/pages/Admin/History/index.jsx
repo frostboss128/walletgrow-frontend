@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetHistoryQuery, useLazyGetHistoryQuery } from "../../../slices/accountApiSlice";
+import { useGetHistoryQuery } from "../../../slices/accountApiSlice";
 import {
   Table,
   TableBody,
@@ -106,7 +106,6 @@ const History = () => {
             </TableHead>
           </TableRow>
         </TableHeader>
-        {console.log(historyData)}
         <TableBody>
           {historyData?.histories?.map(history => (
             <HistoryList history={history} key={history._id} />

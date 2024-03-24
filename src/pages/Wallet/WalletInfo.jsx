@@ -30,10 +30,10 @@ const WalletInfo = ({ walletInfo }) => {
       </div>
       <div className="flex flex-row w-full justify-around gap-10 items-center">
         <Link to="/wallet/out" className="w-full max-w-[200px]">
-          <Button className="w-full">Out</Button>
+          <Button className="w-full bg-sky-400 text-white">Out</Button>
         </Link>
         <Link to="/account/withdraw" className="w-full max-w-[200px]">
-          <Button className="w-full">Withdraw</Button>
+          <Button className="w-full bg-sky-400 text-white">Withdraw</Button>
         </Link>
       </div>
       <Link to="/wallet/record" className="absolute top-4 right-4 text-cyan-700">

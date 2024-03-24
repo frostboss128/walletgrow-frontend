@@ -48,8 +48,8 @@ const Header = ({ onNavChange }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="user img" />
-              <AvatarFallback>WG</AvatarFallback>
+              <AvatarImage src="/images/user.svg" alt="user avatar" />
+              <AvatarFallback>Admin</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-28">
@@ -58,6 +58,7 @@ const Header = ({ onNavChange }) => {
               <DropdownMenuRadioItem value="recharges">Recharges</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="withdraws">Withdraws</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="history">History</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="config">Config</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="logout">Logout</DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuContent>

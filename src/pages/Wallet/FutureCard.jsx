@@ -7,7 +7,7 @@ const FutureCard = ({ src, name, type, description, className }) => {
   return (
     <div
       className={clsx(
-        "flex flex-row gap-4 justify-between px-6 py-2 border items-center content-center my-4 rounded-lg text-gray-700 min-w-[280px] shadow-lg bg-gray",
+        "flex flex-row gap-4 justify-between px-6 py-2 border items-center content-center rounded-lg text-gray-700 min-w-[280px] shadow-lg bg-gray",
         type === "Unlock now" && "bg-teal-50",
         type === "Soon" && "bg-slate-100"
       )}

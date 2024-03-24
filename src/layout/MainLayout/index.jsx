@@ -5,7 +5,7 @@ import MobileNavbar from "./MobileNavbar";
 const MainLayout = () => {
   return (
     <>
-      <main className="mb-16 sm:mb-0">
+      <main className="mb-20 sm:mb-0">
         <Outlet />
       </main>
       <MobileNavbar />

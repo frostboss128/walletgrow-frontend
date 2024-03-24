@@ -1,19 +1,19 @@
 import React from "react";
-import { useGetRechargeRecordQuery } from "../../../slices/accountApiSlice";
-import RechargeList from "./RechargeList";
+import { useGetFinancesQuery } from "../../../slices/accountApiSlice";
+import FinanceList from "./FinanceList";
 import HeaderBar from "../../../components/HeaderBar";
 import { toast } from "sonner";
 
 const RechargeRecord = () => {
-  const { data: recharges, isLoading: getRechargesLoading, isError: getRechargesIsError } = useGetRechargeRecordQuery();
+  const { data: finances, isLoading: financesLoading, isError: financesIsError } = useGetFinancesQuery();
 
   return (
     <div className="space-y-2">
-      <HeaderBar to="/account" title="Recharge Record" />
-      {recharges?.length ? (
+      <HeaderBar to="/account" title="Finance Record" />
+      {finances?.length ? (
         <div className="divide-y-2 px-4 space-y-2">
-          {recharges?.map(recharge => (
-            <RechargeList key={recharge._id} recharge={recharge} />
+          {finances?.map(finance => (
+            <FinanceList key={finance._id} finance={finance} />
           ))}
         </div>
       ) : (

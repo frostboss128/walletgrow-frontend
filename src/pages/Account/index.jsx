@@ -14,7 +14,7 @@ const Account = () => {
   const { data: walletInfo, isLoading: walletLoading, refetch: walletInfoRefetch } = useGetWalletInfoQuery();
 
   return (
-    <div>
+    <>
       <div className="bg-primary text-gray-200 space-y-2">
         <div className="bg-primary text-primary-foreground px-4 py-2 text-center relative">
           <h1 className="text-2xl font-bold">Account</h1>
@@ -67,7 +67,7 @@ const Account = () => {
           </div>
           <div className="text-right">
             <div className="font-bold">COIN: ${walletInfo?.coin || 0}</div>
-            <div className="flex flex-row space-x-2">
+            <div className="flex flex-row justify-end space-x-2">
               <Link to="/account/in">
                 <Button size="sm" className="bg-cyan-600 w-full">
                   IN
@@ -103,12 +103,10 @@ const Account = () => {
               <span>Withdraw</span>
             </div>
           </Link>
-          <Link to="/account/bankcard">
-            <div className="flex flex-row space-x-1 justify-center items-center">
-              <CreditCard />
-              <span>Bank Card</span>
-            </div>
-          </Link>
+          <div className="flex flex-row space-x-1 justify-center items-center">
+            <CreditCard />
+            <span>Bank Card</span>
+          </div>
         </div>
       </div>
 
@@ -122,22 +120,18 @@ const Account = () => {
               <div>Message</div>
             </div>
           </Link>
-          <Link>
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/invite_friend.svg" alt="message" width={25} />
-              </div>
-              <div>Invite Friends</div>
+          <div>
+            <div className="flex justify-center items-center">
+              <img src="/images/account/invite_friend.svg" alt="message" width={25} />
             </div>
-          </Link>
-          <Link to="/account/inviteInfo">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/invite_info.svg" alt="message" width={25} />
-              </div>
-              <div>Invite Info</div>
+            <div>Invite Friends</div>
+          </div>
+          <div>
+            <div className="flex justify-center items-center">
+              <img src="/images/account/invite_info.svg" alt="message" width={25} />
             </div>
-          </Link>
+            <div>Invite Info</div>
+          </div>
           <Link to="/account/commission">
             <div>
               <div className="flex justify-center items-center">
@@ -183,14 +177,6 @@ const Account = () => {
               <div>Password</div>
             </div>
           </Link>
-          <Link to="/account/payPassword">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/pay_password.svg" alt="message" width={25} />
-              </div>
-              <div>Pay Password</div>
-            </div>
-          </Link>
           <Link to="/account/service">
             <div>
               <div className="flex justify-center items-center">
@@ -209,7 +195,7 @@ const Account = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
