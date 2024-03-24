@@ -66,6 +66,14 @@ export const configApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Config"],
       keepUnusedDataFor: 5,
     }),
+    getInvestmentRecord: builder.query({
+      query: () => ({
+        url: `${CONFIG_URL}/record`,
+        method: "GET",
+      }),
+      providesTags: ["Config"],
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
@@ -78,4 +86,5 @@ export const {
   useStartInvestmentMutation,
   useGetInvestmentsQuery,
   useGetInvestmentQuery,
+  useGetInvestmentRecordQuery,
 } = configApiSlice;
