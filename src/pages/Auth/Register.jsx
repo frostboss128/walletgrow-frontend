@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { setCredentials } from "../../slices/authSlice";
 import { useRegisterMutation } from "../../slices/usersApiSlice";
 import { setAccountInfo } from "../../slices/accountSlice";
@@ -10,17 +10,24 @@ import { Card } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { Checkbox } from "../../components/ui/checkbox";
 import { toast } from "sonner";
+import isEmpty from "../../utils/isEmpty";
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [register, { isLoading }] = useRegisterMutation();
 
-  const [data, setData] = useState({ email: "", username: "", password: "", password2: "", code: "" });
+  const [data, setData] = useState({ email: "", username: "", password: "", password2: "", invited: "" });
   const [disabled, setDisabled] = useState(true);
 
   const handleChange = e => setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
   const handleCheckChange = value => setDisabled(!value);
+
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    setData({ ...data, invited: searchParams.get("invited") });
+  }, [searchParams]);
 
   const handleRegister = async e => {
     e.preventDefault();
@@ -101,7 +108,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            {/* <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
+            <div className="flex items-center space-x-4 rounded-md border pl-4 divide-x-2">
               <div>
                 <ShieldPlus />
               </div>
@@ -110,11 +117,12 @@ const Register = () => {
                   type="text"
                   placeholder="Referral Code"
                   className="border-none w-full"
-                  name="code"
+                  name="invited"
+                  defaultValue={searchParams.get("invited")}
                   onChange={handleChange}
                 />
               </div>
-            </div> */}
+            </div>
           </div>
           <div className="w-full flex justify-start items-center space-x-4">
             <Checkbox className="w-6 h-6" onCheckedChange={handleCheckChange} />

@@ -70,7 +70,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
     }),
     invitedFriends: builder.query({
       query: () => ({
-        url: `${ACCOUNT_URL}/invite`,
+        url: `${ACCOUNT_URL}/friends`,
         method: "GET",
       }),
       keepUnusedDataFor: 5,
