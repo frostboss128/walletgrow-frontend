@@ -18,10 +18,11 @@ const Project = lazy(() => import("../pages/Project"));
 
 // Wallet
 const Wallet = lazy(() => import("../pages/Wallet"));
-const RecordList = lazy(() => import("../pages/Wallet/RecordList"));
 const Pledge = lazy(() => import("../pages/Wallet/Pledge"));
-const Investment = lazy(() => import("../pages/Wallet/Investment"));
 const Out = lazy(() => import("../pages/Wallet/Out"));
+const RecordList = lazy(() => import("../pages/Wallet/RecordList"));
+const Investment = lazy(() => import("../pages/Wallet/Investment"));
+const InvestmentHistory = lazy(() => import("../pages/Wallet/InvestmentHistory"));
 
 // Account
 const Account = lazy(() => import("../pages/Account"));
@@ -111,6 +112,11 @@ const router = createBrowserRouter([
             path: "/wallet/investment/:typeId",
             exact: true,
             element: <Investment />,
+          },
+          {
+            path: "/wallet/invhis/:investTypeId",
+            exact: true,
+            element: <InvestmentHistory />,
           },
           {
             path: "/wallet/out",

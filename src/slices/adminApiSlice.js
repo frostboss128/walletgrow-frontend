@@ -74,6 +74,14 @@ export const configApiSlice = apiSlice.injectEndpoints({
       providesTags: ["Config"],
       keepUnusedDataFor: 5,
     }),
+    getInvestmentHistoryByType: builder.query({
+      query: investTypeId => ({
+        url: `${CONFIG_URL}/invhis/${investTypeId}`,
+        method: "GET",
+      }),
+      providesTags: ["Config"],
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
@@ -87,4 +95,5 @@ export const {
   useGetInvestmentsQuery,
   useGetInvestmentQuery,
   useGetInvestmentRecordQuery,
+  useGetInvestmentHistoryByTypeQuery,
 } = configApiSlice;
