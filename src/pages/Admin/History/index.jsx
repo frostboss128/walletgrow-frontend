@@ -33,7 +33,7 @@ import HistoryList from "./HistoryList";
 import { SkipBack, SkipForward, ArrowUpWideNarrow, ArrowDownWideNarrow, FilePenLine, Trash2 } from "lucide-react";
 
 const History = () => {
-  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
+  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: -1 });
   const { data: historyData, isLoading, isError, error } = useGetHistoryQuery({ ...query });
 
   const sortHandler = e => {

@@ -33,7 +33,7 @@ import RechargeList from "./RechargeList";
 import { SkipBack, SkipForward, ArrowUpWideNarrow, ArrowDownWideNarrow, FilePenLine, Trash2 } from "lucide-react";
 
 const Recharges = () => {
-  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
+  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: -1 });
   const { data: rechargeData, isLoading, isError, error, refetch } = useGetAllRechargesQuery({ ...query });
 
   useEffect(() => {

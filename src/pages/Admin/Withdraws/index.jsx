@@ -33,7 +33,7 @@ import WithdrawList from "./WithdrawList";
 import { SkipBack, SkipForward, ArrowUpWideNarrow, ArrowDownWideNarrow, FilePenLine, Trash2 } from "lucide-react";
 
 const Withdraws = () => {
-  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
+  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: -1 });
   const { data: withdrawData, isLoading, isError, error } = useGetAllWithdrawsQuery({ ...query });
 
   const sortHandler = e => {

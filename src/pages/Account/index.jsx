@@ -61,7 +61,7 @@ const Account = () => {
           </div>
         </div>
 
-        <div className="px-4">
+        {/* <div className="px-4">
           <Card className="bg-gray-800 text-inherit rounded-xl px-4 py-3 space-y-3">
             <div className="flex flex-row items-center justify-between">
               <div>Level</div>
@@ -80,7 +80,7 @@ const Account = () => {
               <div>Total Team Member (0/0)</div>
             </div>
           </Card>
-        </div>
+        </div> */}
 
         <div className="flex flex-row px-4 space-x-2 max-sx:text-sm items-center">
           <img src="/images/account/wallet.svg" alt="wallet" width={40} />
@@ -176,7 +176,7 @@ const Account = () => {
                   height={200}
                 />
               </div>
-              <div className="line-clamp-2">{`inviteURL${accountInfo?.email}`}</div>
+              <div className="line-clamp-2">{`${inviteURL}${accountInfo?.email}`}</div>
               <DialogFooter>
                 <DialogClose asChild>
                   <Button>Close</Button>

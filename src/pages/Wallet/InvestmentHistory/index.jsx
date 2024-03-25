@@ -9,12 +9,10 @@ const InvestmentHistory = () => {
 
   const { data, isLoading, isError, error, refetch } = useGetInvestmentHistoryByTypeQuery(investTypeId);
 
-  console.log(data);
-
   return (
     <div className="space-y-4">
       <div className="bg-primary text-primary-foreground px-4 py-3 text-center relative">
-        <Link to="/wallet">
+        <Link to="/wallet/record">
           <ArrowLeftCircle className="absolute left-3" />
         </Link>
         <h1>Investment Record</h1>

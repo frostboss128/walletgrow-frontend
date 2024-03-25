@@ -33,25 +33,25 @@ import UserList from "./UserList";
 import { SkipBack, SkipForward, ArrowUpWideNarrow, ArrowDownWideNarrow, FilePenLine, Trash2 } from "lucide-react";
 
 const Users = () => {
-  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: 1 });
+  const [query, setQuery] = useState({ page: 1, pageSize: 50, keyword: "", sort: "created_at", sortDirection: -1 });
   const { data: usersData, isLoading, isError, error } = useGetUsersQuery({ ...query });
 
-  const sortHandler = (e) => {
+  const sortHandler = e => {
     e.preventDefault();
     e.stopPropagation();
     if (e.currentTarget.id === query.sort) setQuery({ ...query, sortDirection: -1 * query.sortDirection });
     else setQuery({ ...query, sort: e.currentTarget.id, sortDirection: 1 });
   };
 
-  const pageHandler = (page) => setQuery({ ...query, page });
+  const pageHandler = page => setQuery({ ...query, page });
 
-  const previousPageHandler = (e) => {
+  const previousPageHandler = e => {
     e.preventDefault();
     if (query.page <= 1) return;
     setQuery({ ...query, page: query.page - 1 });
   };
 
-  const nextPageHandler = (e) => {
+  const nextPageHandler = e => {
     e.preventDefault();
     if (query.page >= usersData.pages) return;
     setQuery({ ...query, page: query.page + 1 });
@@ -127,7 +127,7 @@ const Users = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {usersData?.users?.map((user) => (
+          {usersData?.users?.map(user => (
             <UserList user={user} key={user._id} />
           ))}
         </TableBody>
@@ -137,7 +137,7 @@ const Users = () => {
               <div className="flex flex-row w-full justify-between space-x-4">
                 <div>Total : {usersData?.total || 0}</div>
                 <div className="flex-grow">Pages: {usersData?.pages || 1}</div>
-                <Select onValueChange={(e) => setQuery({ ...query, pageSize: e })}>
+                <Select onValueChange={e => setQuery({ ...query, pageSize: e })}>
                   <SelectTrigger className="w-20">
                     <SelectValue placeholder={query.pageSize} />
                   </SelectTrigger>
@@ -156,7 +156,7 @@ const Users = () => {
             <TableCell colSpan={2}>
               <Pagination className="justify-end *:hover:cursor-pointer">
                 <PaginationContent>
-                  <PaginationItem onClick={(e) => pageHandler(1)}>
+                  <PaginationItem onClick={e => pageHandler(1)}>
                     <SkipBack />
                   </PaginationItem>
                   <PaginationItem onClick={previousPageHandler}>
@@ -168,7 +168,7 @@ const Users = () => {
                   <PaginationItem onClick={nextPageHandler}>
                     <PaginationNext />
                   </PaginationItem>
-                  <PaginationItem onClick={(e) => pageHandler(usersData.pages)}>
+                  <PaginationItem onClick={e => pageHandler(usersData.pages)}>
                     <SkipForward />
                   </PaginationItem>
                 </PaginationContent>
