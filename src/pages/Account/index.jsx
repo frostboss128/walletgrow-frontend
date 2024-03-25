@@ -3,7 +3,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useProfileQuery } from "../../slices/usersApiSlice";
 import { useGetWalletInfoQuery } from "../../slices/walletApiSlice";
-import { Headset, ArrowUpRightSquare, CheckCircle, CreditCard, Rocket, MessageCircleQuestion } from "lucide-react";
+import {
+  Headset,
+  ArrowUpRightSquare,
+  CheckCircle,
+  CreditCard,
+  Rocket,
+  MessageCircleQuestion,
+  ChevronRight,
+} from "lucide-react";
 import { Card } from "../../components/ui/card";
 import { Progress } from "../../components/ui/progress";
 import { Button } from "../../components/ui/button";
@@ -133,32 +141,27 @@ const Account = () => {
         </div>
       </div>
 
-      <div className="space-y-4 mt-6 text-xs">
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 px-4 text-center">
-          <div>
-            <div className="flex justify-center items-center">
-              <img src="/images/account/message.svg" alt="message" width={25} />
-            </div>
-            <div>Message</div>
+      <div className="space-y-8 py-4 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 divide-y shadow-md rounded-md bg-gray-100">
+          <div className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/message.svg" alt="message" width={30} />
+            <div className="flex-grow">Message</div>
+            <ChevronRight />
           </div>
-          <Link to="/account/invited_friends">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/invite_friend.svg" alt="message" width={25} />
-              </div>
-              <div>Invited Friends</div>
-            </div>
+          <Link to="/account/invited_friends" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/invite_friend.svg" alt="invite_friend" width={30} />
+            <div className="flex-grow">Invited Friends</div>
+            <ChevronRight />
           </Link>
           <Dialog>
             <DialogTrigger asChild>
-              <div>
-                <div className="flex justify-center items-center">
-                  <img src="/images/account/invite_info.svg" alt="message" width={25} />
-                </div>
-                <div>Invite Info</div>
+              <div className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+                <img src="/images/account/invite_info.svg" alt="invite_info" width={30} />
+                <div className="flex-grow">Invite Info</div>
+                <ChevronRight />
               </div>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="max-w-[320px]">
               <DialogHeader className="overflow-hidden space-y-2">
                 <DialogTitle className="truncate space-y-2">Invited Info</DialogTitle>
                 <DialogDescription>You can click the qr code to copy the link.</DialogDescription>
@@ -184,64 +187,43 @@ const Account = () => {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          <Link to="/account/commission_record">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/commission.svg" alt="message" width={25} />
-              </div>
-              <div>Commission Record</div>
-            </div>
+          <Link to="/account/commission_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/commission.svg" alt="invite_info" width={30} />
+            <div className="flex-grow">Commission Record</div>
+            <ChevronRight />
           </Link>
-          <Link to="/account/finance_record">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/finance.svg" alt="message" width={25} />
-              </div>
-              <div>Finance Record</div>
-            </div>
+          <Link to="/account/finance_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/finance.svg" alt="finance" width={30} />
+            <div className="flex-grow">Finance Record</div>
+            <ChevronRight />
           </Link>
-          <Link to="/account/recharge_record">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/recharge.svg" alt="message" width={25} />
-              </div>
-              <div>Recharge Record</div>
-            </div>
+          <Link to="/account/recharge_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/recharge.svg" alt="recharge" width={30} />
+            <div className="flex-grow">Recharge Record</div>
+            <ChevronRight />
           </Link>
-          <Link to="/account/withdraw_record">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/withdraw_record.svg" alt="message" width={25} />
-              </div>
-              <div>Withdraw Record</div>
-            </div>
+          <Link to="/account/withdraw_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/withdraw_record.svg" alt="withdraw record" width={30} />
+            <div className="flex-grow">Withdraw Record</div>
+            <ChevronRight />
           </Link>
         </div>
 
-        <div className="h-5 bg-gray-100" />
-
-        <div className="grid grid-cols-3 gap-4 px-4 text-center">
-          <div>
-            <div className="flex justify-center items-center">
-              <img src="/images/account/password.svg" alt="message" width={25} />
-            </div>
-            <div>Password</div>
-          </div>
-          <Link to="/account/service">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/service.svg" alt="message" width={25} />
-              </div>
-              <div>Service</div>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 divide-y shadow-md rounded-md bg-gray-100">
+          <Link to="/account/withdraw_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/password.svg" alt="password" width={30} />
+            <div className="flex-grow">Password</div>
+            <ChevronRight />
           </Link>
-          <Link to="/">
-            <div>
-              <div className="flex justify-center items-center">
-                <img src="/images/account/about.svg" alt="message" width={25} />
-              </div>
-              <div>About US</div>
-            </div>
+          <Link to="/account/service" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/service.svg" alt="service" width={30} />
+            <div className="flex-grow">Service</div>
+            <ChevronRight />
+          </Link>
+          <Link to="/" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
+            <img src="/images/account/about.svg" alt="about" width={30} />
+            <div className="flex-grow">About Us</div>
+            <ChevronRight />
           </Link>
         </div>
       </div>
