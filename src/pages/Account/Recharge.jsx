@@ -163,7 +163,7 @@ const Recharge = () => {
           <DialogTrigger asChild>
             <div className="flex flex-row justify-between items-center space-x-4 py-4 text-xs">
               <div>
-                <img src="/images/account/trx.gif" alt="tether" width={120} />
+                <img src="/images/account/TRX.gif" alt="tether" width={120} />
               </div>
               <div className="font-bold text-sm">
                 <div>TRX</div>
