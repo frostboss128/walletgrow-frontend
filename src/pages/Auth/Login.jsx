@@ -34,7 +34,14 @@ const Login = () => {
   return (
     <div className="grid place-items-center">
       <Card className="flex flex-col min-w-[300px] max-w-lg mx:w-[380px] sm:w-[500px] p-6 rounded-xl sm:p-10 my-6">
-        <img src="/images/logo.svg" alt="logo" width={100} height={100} className="flex self-center justify-around" />
+        <img
+          src="/images/logo.svg"
+          loading="lazy"
+          alt="logo"
+          width={100}
+          height={100}
+          className="flex self-center justify-around"
+        />
 
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign in</h1>

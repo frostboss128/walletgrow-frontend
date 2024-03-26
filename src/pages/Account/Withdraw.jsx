@@ -60,7 +60,7 @@ const Withdraw = () => {
         </div>
 
         <div className="flex flex-row px-4 space-x-2 max-sx:text-sm items-center">
-          <img src="/images/account/wallet.svg" alt="wallet" width={40} />
+          <img src="/images/account/wallet.svg" loading="lazy" alt="wallet" width={40} />
           <div className="flex-grow">
             <div>X-Wallet Total Coin</div>
             <div>Daily reward upto 2.3%</div>

@@ -34,7 +34,7 @@ const Home = () => {
           single platform, which will become a gateway to the world of technology and finance.
         </p>
         <div className="grid place-items-center">
-          <img src="/images/home/working.gif" alt="working.gif" width={"100%"} className="max-w-96" />
+          <img src="/images/home/working.gif" loading="lazy" alt="working.gif" width={"100%"} className="max-w-96" />
         </div>
       </div>
 
@@ -45,7 +45,7 @@ const Home = () => {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-2">
-                    <img src="/images/home/ads/01.svg" alt="01" width={"100%"} />
+                    <img src="/images/home/ads/01.svg" loading="lazy" alt="01" width={"100%"} />
                   </CardContent>
                   <CardFooter className="flex-col text-sm space-y-2 w-full p-2">
                     <div className="text-center">
@@ -61,7 +61,7 @@ const Home = () => {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-2">
-                    <img src="/images/home/ads/02.svg" alt="02" width={"100%"} />
+                    <img src="/images/home/ads/02.svg" loading="lazy" alt="02" width={"100%"} />
                   </CardContent>
                   <CardFooter className="flex-col text-sm space-y-2 w-full p-2">
                     <div className="text-center">
@@ -77,7 +77,7 @@ const Home = () => {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-2">
-                    <img src="/images/home/ads/03.svg" alt="03" width={"100%"} />
+                    <img src="/images/home/ads/03.svg" loading="lazy" alt="03" width={"100%"} />
                   </CardContent>
                   <CardFooter className="flex-col text-sm space-y-2 w-full p-2">
                     <div className="text-center">
@@ -93,7 +93,7 @@ const Home = () => {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-2">
-                    <img src="/images/home/ads/04.svg" alt="04" width={"100%"} />
+                    <img src="/images/home/ads/04.svg" loading="lazy" alt="04" width={"100%"} />
                   </CardContent>
                   <CardFooter className="flex-col text-sm space-y-2 w-full p-2">
                     <div className="text-center">
@@ -127,7 +127,7 @@ const Home = () => {
                 loop: true,
                 autoplay: true,
                 animationData: investment,
-                rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+                rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
               }}
               width={200}
               height={200}
@@ -145,7 +145,7 @@ const Home = () => {
                 loop: true,
                 autoplay: true,
                 animationData: monitoring,
-                rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+                rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
               }}
               width={200}
               height={200}
@@ -165,7 +165,7 @@ const Home = () => {
                 loop: true,
                 autoplay: true,
                 animationData: insurance,
-                rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+                rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
               }}
               width={200}
               height={200}
@@ -183,7 +183,7 @@ const Home = () => {
                 loop: true,
                 autoplay: true,
                 animationData: convenient,
-                rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+                rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
               }}
               width={200}
               height={200}
@@ -202,7 +202,7 @@ const Home = () => {
                 loop: true,
                 autoplay: true,
                 animationData: secure,
-                rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+                rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
               }}
               width={200}
               height={200}
@@ -220,7 +220,7 @@ const Home = () => {
                 loop: true,
                 autoplay: true,
                 animationData: stable,
-                rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
+                rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
               }}
               width={200}
               height={200}
@@ -251,7 +251,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-x-16 sm:gap-y-8 px-4 sm:px-10">
           <div className="flex flex-row shadow-md shadow-gray-400 items-center p-4 gap-x-6 rounded-md">
-            <img src="/images/home/howto/Investment.svg" alt="investment" width={70} height={70} />
+            <img src="/images/home/howto/Investment.svg" loading="lazy" alt="investment" width={70} height={70} />
             <div className="col-span-4 text-left space-y-2">
               <h6 className="font-bold">Investment</h6>
               <p className="text-sm">
@@ -261,7 +261,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-row shadow-md shadow-gray-400 items-center p-4 gap-x-6 rounded-md">
-            <img src="/images/home/howto/Monitoring.svg" alt="Monitoring" width={70} height={70} />
+            <img src="/images/home/howto/Monitoring.svg" loading="lazy" alt="Monitoring" width={70} height={70} />
             <div className="col-span-4 text-left space-y-2">
               <h6 className="font-bold">Monitoring</h6>
               <p className="text-sm">
@@ -270,7 +270,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-row shadow-md shadow-gray-400 items-center p-4 gap-x-6 rounded-md">
-            <img src="/images/home/howto/Insurance.svg" alt="Insurance" width={70} height={70} />
+            <img src="/images/home/howto/Insurance.svg" loading="lazy" alt="Insurance" width={70} height={70} />
             <div className="col-span-4 text-left space-y-2">
               <h6 className="font-bold">Insurance</h6>
               <p className="text-sm">
@@ -279,7 +279,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-row shadow-md shadow-gray-400 items-center p-4 gap-x-6 rounded-md">
-            <img src="/images/home/howto/Entertainment.svg" alt="Entertainment" width={70} height={70} />
+            <img src="/images/home/howto/Entertainment.svg" loading="lazy" alt="Entertainment" width={70} height={70} />
             <div className="col-span-4 text-left space-y-2">
               <h6 className="font-bold">Entertainment</h6>
               <p className="text-sm">Soon (Play and Earn)</p>
@@ -290,7 +290,7 @@ const Home = () => {
 
       <div className="text-center px-6 text-gray-700 font-semibold grid grid-cols-1 sm:grid-cols-2 place-items-center sm:gap-8">
         <div>
-          <img src="/images/home/mindmap.png" alt="mindmap" width={"100%"} />
+          <img src="/images/home/mindmap.png" loading="lazy" alt="mindmap" width={"100%"} />
         </div>
         <div className="text-left space-y-2">
           <div className="space-y-4 font-bold">
@@ -302,7 +302,7 @@ const Home = () => {
             full safety of your funds. If you're looking for the best CEX based investment standards, WalletGrow is what
             you need.
           </div>
-          <img src="/images/home/phone.svg" alt="phone" width={"100%"} />
+          <img src="/images/home/phone.svg" loading="lazy" alt="phone" width={"100%"} />
         </div>
       </div>
 
@@ -343,7 +343,7 @@ const Home = () => {
       <footer className="text-gray-700">
         <div className="bg-[#ebfdfd] grid grid-cols-12 gap-6 p-8">
           <div className="col-span-12 sm:col-span-6 space-y-4">
-            <img src="/images/logo.svg" alt="logo" width={100} height={100} />
+            <img src="/images/logo.svg" loading="lazy" alt="logo" width={100} height={100} />
             <div className="text-3xl font-extrabold">WalletGrow</div>
             <div className="text-lg">
               Most <b className="text-2xl">Innovative</b> and <b className="text-2xl">Reliable</b> Crypto Earning
@@ -354,27 +354,27 @@ const Home = () => {
               <ul className="flex flex-row gap-4">
                 <li>
                   <a href="https://t.me/WalletGrow1" target="_blank">
-                    <img src="/images/socials/telegram.png" alt="telegram" width={32} height={32} />
+                    <img src="/images/socials/telegram.png" loading="lazy" alt="telegram" width={32} height={32} />
                   </a>
                 </li>
                 <li>
                   <a href="https://x.com/Wallet_GrowX?t=FN-JlCx7hgclQ8gVCsa_kw&s=09" target="_blank">
-                    <img src="/images/socials/twitter.png" alt="telegram" width={32} height={32} />
+                    <img src="/images/socials/twitter.png" loading="lazy" alt="telegram" width={32} height={32} />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.youtube.com/@walletgrowX" target="_blank">
-                    <img src="/images/socials/youtube.png" alt="telegram" width={32} height={32} />
+                    <img src="/images/socials/youtube.png" loading="lazy" alt="telegram" width={32} height={32} />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.facebook.com/profile.php?id=61553556848909&mibextid=2JQ9oc" target="_blank">
-                    <img src="/images/socials/facebook.png" alt="telegram" width={32} height={32} />
+                    <img src="/images/socials/facebook.png" loading="lazy" alt="telegram" width={32} height={32} />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.reddit.com/u/walletgrowX/s/LB8rTKv92Y" target="_blank">
-                    <img src="/images/socials/reddit.png" alt="telegram" width={32} height={32} />
+                    <img src="/images/socials/reddit.png" loading="lazy" alt="telegram" width={32} height={32} />
                   </a>
                 </li>
               </ul>

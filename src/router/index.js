@@ -18,7 +18,6 @@ const Project = lazy(() => import("../pages/Project"));
 
 // Wallet
 const Wallet = lazy(() => import("../pages/Wallet"));
-const Pledge = lazy(() => import("../pages/Wallet/Pledge"));
 const Out = lazy(() => import("../pages/Wallet/Out"));
 const RecordList = lazy(() => import("../pages/Wallet/RecordList"));
 const Investment = lazy(() => import("../pages/Wallet/Investment"));
@@ -35,6 +34,8 @@ const WithdrawRecord = lazy(() => import("../pages/Account/WithdrawRecord"));
 const FinanceRecord = lazy(() => import("../pages/Account/FinanceRecord"));
 const CommissionRecord = lazy(() => import("../pages/Account/CommissionRecord"));
 const InvitedFriends = lazy(() => import("../pages/Account/InvitedFriends"));
+const InRecord = lazy(() => import("../pages/Account/InRecord"));
+const OutRecord = lazy(() => import("../pages/Account/OutRecord"));
 
 const NotFound = lazy(() => import("../pages/NotFound"));
 const WillReturn = lazy(() => import("../pages/WillReturn"));
@@ -61,14 +62,14 @@ const router = createBrowserRouter([
       {
         path: "/auth/login",
         exact: true,
-        element: <Login />,
+        element: <Login />
       },
       {
         path: "/auth/register",
         exact: true,
-        element: <Register />,
-      },
-    ],
+        element: <Register />
+      }
+    ]
   },
   {
     path: "/",
@@ -79,9 +80,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
-      },
-    ],
+        element: <Home />
+      }
+    ]
   },
   {
     path: "/wallet",
@@ -96,36 +97,31 @@ const router = createBrowserRouter([
           {
             path: "",
             exact: true,
-            element: <Wallet />,
+            element: <Wallet />
           },
           {
             path: "/wallet/record",
             exact: true,
-            element: <RecordList />,
-          },
-          {
-            path: "/wallet/pledge",
-            exact: true,
-            element: <Pledge />,
+            element: <RecordList />
           },
           {
             path: "/wallet/investment/:typeId",
             exact: true,
-            element: <Investment />,
+            element: <Investment />
           },
           {
             path: "/wallet/invhis/:investTypeId",
             exact: true,
-            element: <InvestmentHistory />,
+            element: <InvestmentHistory />
           },
           {
             path: "/wallet/out",
             exact: true,
-            element: <Out />,
-          },
-        ],
-      },
-    ],
+            element: <Out />
+          }
+        ]
+      }
+    ]
   },
   {
     path: "/project",
@@ -135,9 +131,9 @@ const router = createBrowserRouter([
       {
         path: "/project",
         exact: true,
-        element: <Project />,
-      },
-    ],
+        element: <Project />
+      }
+    ]
   },
   {
     path: "/insurance",
@@ -147,9 +143,9 @@ const router = createBrowserRouter([
       {
         path: "",
         exact: true,
-        element: <WillReturn />,
-      },
-    ],
+        element: <WillReturn />
+      }
+    ]
   },
   {
     path: "/account",
@@ -164,56 +160,67 @@ const router = createBrowserRouter([
           {
             path: "",
             exact: true,
-            element: <Account />,
+            element: <Account />
           },
           {
             path: "/account/recharge",
             exact: true,
-            element: <Recharge />,
+            element: <Recharge />
           },
           {
             path: "/account/in",
             exact: true,
-            element: <In />,
+            element: <In />
           },
           {
             path: "/account/withdraw",
             exact: true,
-            element: <Withdraw />,
+            element: <Withdraw />
           },
           {
             path: "/account/recharge_record",
             exact: true,
-            element: <RechargeRecord />,
+            element: <RechargeRecord />
           },
           {
             path: "/account/withdraw_record",
             exact: true,
-            element: <WithdrawRecord />,
+            element: <WithdrawRecord />
           },
           {
             path: "/account/finance_record",
             exact: true,
-            element: <FinanceRecord />,
+            element: <FinanceRecord />
           },
           {
             path: "/account/commission_record",
             exact: true,
-            element: <CommissionRecord />,
+            element: <CommissionRecord />
           },
+
           {
             path: "/account/invited_friends",
             exact: true,
-            element: <InvitedFriends />,
+            element: <InvitedFriends />
+          },
+          {
+            path: "/account/in_rec",
+            exact: true,
+            element: <InRecord />
+          },
+          {
+            path: "/account/out_rec",
+            exact: true,
+            element: <OutRecord />
           },
           {
             path: "/account/service",
             exact: true,
-            element: <Service />,
-          },
-        ],
-      },
-    ],
+            element: <Service />
+          }
+        ]
+      }
+    ]
   },
   {
     path: "/admin",
@@ -228,57 +235,57 @@ const router = createBrowserRouter([
           {
             path: "/admin/",
             exact: true,
-            element: <Dashboard />,
+            element: <Dashboard />
           },
           {
             path: "/admin/users",
             exact: true,
-            element: <Users />,
+            element: <Users />
           },
           {
             path: "/admin/users/:userId",
             exact: true,
-            element: <UserDetail />,
+            element: <UserDetail />
           },
           {
             path: "/admin/recharges",
             exact: true,
-            element: <AdminRecharges />,
+            element: <AdminRecharges />
           },
           {
             path: "/admin/recharges/:rechargeId",
             exact: true,
-            element: <AdminRechargesDetail />,
+            element: <AdminRechargesDetail />
           },
           {
             path: "/admin/withdraws",
             exact: true,
-            element: <AdminWithdraw />,
+            element: <AdminWithdraw />
           },
           {
             path: "/admin/withdraws/:withdrawId",
             exact: true,
-            element: <AdminWithdrawDetail />,
+            element: <AdminWithdrawDetail />
           },
           {
             path: "/admin/history",
             exact: true,
-            element: <AdminHistory />,
+            element: <AdminHistory />
           },
           {
             path: "/admin/config",
             exact: true,
-            element: <AdminConfig />,
+            element: <AdminConfig />
           },
           {
             path: "/admin/config/:typeId",
             exact: true,
-            element: <AdminConfigDetail />,
-          },
-        ],
-      },
-    ],
-  },
+            element: <AdminConfigDetail />
+          }
+        ]
+      }
+    ]
+  }
 ]);
 
 export default router;

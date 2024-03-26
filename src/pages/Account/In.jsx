@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useProfileQuery } from "../../slices/usersApiSlice";
 import { useInWalletMutation } from "../../slices/accountApiSlice";
 import { Input } from "../../components/ui/input";
@@ -7,12 +8,13 @@ import { toast } from "sonner";
 import HeaderBar from "../../components/HeaderBar";
 
 const In = () => {
+  const navigate = useNavigate();
   const { data: accountData, isLoading: accountLoading, refetch: accountRefetch } = useProfileQuery();
   const [inWallet, { isLoading: inLoading }] = useInWalletMutation();
 
   const [coin, setCoin] = useState(0);
 
-  const inHandler = async (e) => {
+  const inHandler = async e => {
     e.preventDefault();
     if (!coin) return;
     try {
@@ -36,7 +38,7 @@ const In = () => {
               <span>Coin :</span>
               <span className="font-bold text-green-500">{accountData?.coin || 0}</span>
             </div>
-            <Button size="sm" onClick={(e) => accountRefetch()}>
+            <Button size="sm" onClick={e => accountRefetch()}>
               Refresh
             </Button>
           </div>
@@ -45,11 +47,15 @@ const In = () => {
           <h3 className="font-medium">Transfer amount</h3>
           <div className="flex flex-row justify-between items-center space-x-3">
             <span>Coin: </span>
-            <Input type="number" className="focus-visible:ring-0" onChange={(e) => setCoin(e.target.value)} />
+            <Input type="number" className="focus-visible:ring-0" onChange={e => setCoin(e.target.value)} />
           </div>
         </div>
         <Button type="submit" className="w-full" onClick={inHandler}>
           Transfer
+        </Button>
+
+        <Button className="w-full" onClick={e => navigate("/account/in_rec")}>
+          Record
         </Button>
       </div>
     </>

@@ -5,7 +5,7 @@ const Timeline2027 = () => {
     <ol className="relative border-s border-gray-400 dark:border-gray-700 ml-4">
       <li className="mb-10 ms-6">
         <span className="absolute flex items-center justify-center w-8 h-8 bg-sky-200 rounded-full -start-4 dark:ring-gray-900 dark:bg-blue-900">
-          <img src="/roadmap/2023.svg" alt="2027" width={"80%"} />
+          <img src="/roadmap/2023.svg" loading="lazy" alt="2027" width={"80%"} />
         </span>
         <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
           The beginning of 2027

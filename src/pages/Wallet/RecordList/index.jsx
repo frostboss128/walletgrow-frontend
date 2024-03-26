@@ -15,9 +15,11 @@ const RecordList = () => {
         </Link>
         <h1>Investment Record</h1>
       </div>
-      {data?.map(record => (
-        <Record key={record._id} record={record} />
-      ))}
+      <div className="divide-y-2 px-2">
+        {data?.map(record => (
+          <Record key={record._id} record={record} />
+        ))}
+      </div>
     </div>
   );
 };

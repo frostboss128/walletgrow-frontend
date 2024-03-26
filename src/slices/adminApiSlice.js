@@ -1,88 +1,96 @@
-import { CONFIG_URL } from "../services/constants";
+import { INVESTMENT_URL } from "../services/constants";
 import { apiSlice } from "./apiSlice";
 
 export const configApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     createInvestmentType: builder.mutation({
       query: data => ({
-        url: CONFIG_URL,
+        url: INVESTMENT_URL,
         method: "POST",
-        body: data,
+        body: data
       }),
-      providesTags: ["Config"],
+      providesTags: ["Investment"]
     }),
     getAllInvestmentType: builder.query({
       query: () => ({
-        url: CONFIG_URL,
-        method: "GET",
+        url: INVESTMENT_URL,
+        method: "GET"
       }),
-      providesTags: ["Config"],
-      keepUnusedDataFor: 5,
+      providesTags: ["Investment"],
+      keepUnusedDataFor: 5
     }),
     getInvestmentType: builder.query({
       query: typeId => ({
-        url: `${CONFIG_URL}/${typeId}`,
-        method: "GET",
+        url: `${INVESTMENT_URL}/${typeId}`,
+        method: "GET"
       }),
-      providesTags: ["Config"],
-      keepUnusedDataFor: 5,
+      providesTags: ["Investment"],
+      keepUnusedDataFor: 5
     }),
     updateInvestmentType: builder.mutation({
       query: ({ typeId, data }) => ({
-        url: `${CONFIG_URL}/${typeId}`,
+        url: `${INVESTMENT_URL}/${typeId}`,
         method: "PUT",
-        body: data,
+        body: data
       }),
-      providesTags: ["Config"],
+      providesTags: ["Investment"]
     }),
     deleteInvestmentType: builder.mutation({
       query: typeId => ({
-        url: `${CONFIG_URL}/${typeId}`,
-        method: "DELETE",
+        url: `${INVESTMENT_URL}/${typeId}`,
+        method: "DELETE"
       }),
-      providesTags: ["Config"],
+      providesTags: ["Investment"]
     }),
     startInvestment: builder.mutation({
       query: ({ typeId, data }) => ({
-        url: `${CONFIG_URL}/${typeId}`,
+        url: `${INVESTMENT_URL}/${typeId}`,
         method: "POST",
-        body: data,
+        body: data
       }),
-      providesTags: ["Config"],
+      providesTags: ["Investment"]
     }),
     getInvestments: builder.query({
       query: () => ({
-        url: `${CONFIG_URL}/user`,
-        method: "GET",
+        url: `${INVESTMENT_URL}/user`,
+        method: "GET"
       }),
-      providesTags: ["Config"],
-      keepUnusedDataFor: 5,
+      providesTags: ["Investment"],
+      keepUnusedDataFor: 5
     }),
     getInvestment: builder.query({
       query: typeId => ({
-        url: `${CONFIG_URL}/user/${typeId}`,
-        method: "GET",
+        url: `${INVESTMENT_URL}/user/${typeId}`,
+        method: "GET"
       }),
-      providesTags: ["Config"],
-      keepUnusedDataFor: 5,
+      providesTags: ["Investment"],
+      keepUnusedDataFor: 5
     }),
     getInvestmentRecord: builder.query({
       query: () => ({
-        url: `${CONFIG_URL}/record`,
-        method: "GET",
+        url: `${INVESTMENT_URL}/record`,
+        method: "GET"
       }),
-      providesTags: ["Config"],
-      keepUnusedDataFor: 5,
+      providesTags: ["Investment"],
+      keepUnusedDataFor: 5
     }),
     getInvestmentHistoryByType: builder.query({
       query: investTypeId => ({
-        url: `${CONFIG_URL}/invhis/${investTypeId}`,
-        method: "GET",
+        url: `${INVESTMENT_URL}/invhis/${investTypeId}`,
+        method: "GET"
       }),
-      providesTags: ["Config"],
-      keepUnusedDataFor: 5,
+      providesTags: ["Investment"],
+      keepUnusedDataFor: 5
     }),
-  }),
+    reinvest: builder.mutation({
+      query: data => ({
+        url: `${INVESTMENT_URL}/reinvest`,
+        method: "PUT",
+        body: data
+      }),
+      providesTags: ["Investment"]
+    })
+  })
 });
 
 export const {
@@ -96,4 +104,5 @@ export const {
   useGetInvestmentQuery,
   useGetInvestmentRecordQuery,
   useGetInvestmentHistoryByTypeQuery,
+  useReinvestMutation
 } = configApiSlice;

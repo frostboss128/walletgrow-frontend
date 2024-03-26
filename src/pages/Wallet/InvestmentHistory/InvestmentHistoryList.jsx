@@ -7,7 +7,7 @@ const InvestmentHistoryList = ({ record }) => {
     <div className="px-6">
       <div className="grid grid-cols-12 gap-2 items-stretch pb-2">
         <div className="col-span-2 flex items-center">
-          <img src="/images/wallet/tether-usdt-logo.svg" alt="tether-usdt-logo" width={50} height={50} />
+          <img src="/images/wallet/tether-usdt-logo.svg" loading="lazy" alt="tether-usdt-logo" width={50} height={50} />
         </div>
         <div className="col-span-7 flex flex-col">
           <div className="font-medium">{record.type.name}</div>

@@ -44,7 +44,14 @@ const Register = () => {
   return (
     <div className="grid place-content-center min-h-screen">
       <Card className="flex flex-col min-w-[325px] max-w-md mx:w-[425px] sm:w-[550px] p-6 rounded-md sm:p-10 m-12">
-        <img src="/images/logo.svg" alt="logo" width={100} height={100} className="flex self-center justify-around" />
+        <img
+          src="/images/logo.svg"
+          loading="lazy"
+          alt="logo"
+          width={100}
+          height={100}
+          className="flex self-center justify-around"
+        />
 
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign up</h1>

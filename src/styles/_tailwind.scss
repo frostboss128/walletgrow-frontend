@@ -735,9 +735,6 @@ video {
 .mt-4 {
   margin-top: 1rem;
 }
-.mt-6 {
-  margin-top: 1.5rem;
-}
 .mt-8 {
   margin-top: 2rem;
 }
@@ -900,9 +897,6 @@ video {
 .min-w-0 {
   min-width: 0px;
 }
-.min-w-\[225px\] {
-  min-width: 225px;
-}
 .min-w-\[240px\] {
   min-width: 240px;
 }
@@ -929,6 +923,9 @@ video {
 }
 .max-w-\[200px\] {
   max-width: 200px;
+}
+.max-w-\[320px\] {
+  max-width: 320px;
 }
 .max-w-full {
   max-width: 100%;
@@ -1062,9 +1059,6 @@ video {
 .justify-around {
   justify-content: space-around;
 }
-.justify-items-center {
-  justify-items: center;
-}
 .gap-1 {
   gap: 0.25rem;
 }
@@ -1161,6 +1155,11 @@ video {
   border-right-width: calc(2px * var(--tw-divide-x-reverse));
   border-left-width: calc(2px * calc(1 - var(--tw-divide-x-reverse)));
 }
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
 .divide-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1219,9 +1218,6 @@ video {
 .border-b {
   border-bottom-width: 1px;
 }
-.border-b-2 {
-  border-bottom-width: 2px;
-}
 .border-l {
   border-left-width: 1px;
 }
@@ -1236,9 +1232,6 @@ video {
 }
 .border-t-2 {
   border-top-width: 2px;
-}
-.border-dashed {
-  border-style: dashed;
 }
 .border-none {
   border-style: none;
@@ -1263,10 +1256,6 @@ video {
 }
 .border-transparent {
   border-color: transparent;
-}
-.border-b-gray-800 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(31 41 55 / var(--tw-border-opacity));
 }
 .border-l-transparent {
   border-left-color: transparent;
@@ -1446,10 +1435,6 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 .pb-2 {
   padding-bottom: 0.5rem;
@@ -2291,10 +2276,6 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .sm\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -2362,11 +2343,6 @@ video {
   .sm\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
-  }
-
-  .sm\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
   }
 
   .sm\:py-6 {

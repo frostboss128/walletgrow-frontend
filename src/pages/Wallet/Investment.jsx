@@ -6,6 +6,7 @@ import {
   useStartInvestmentMutation,
   useGetInvestmentsQuery,
   useGetInvestmentQuery,
+  useReinvestMutation
 } from "../../slices/adminApiSlice";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
@@ -17,7 +18,7 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "../../components/ui/select";
 import Timer from "../../components/ui/timer";
 import HeaderBar from "../../components/HeaderBar";
@@ -30,17 +31,20 @@ const Investment = () => {
     data: walletInfo,
     isLoading: walletInfoLoading,
     isError: walletInfoIsError,
-    refetch: walletInfoRefetch,
+    refetch: walletInfoRefetch
   } = useGetWalletInfoQuery();
   const {
     data: investmentType,
     isLoading: investmentTypeLoading,
     isError: investmentTypeIsError,
-    refetch: investmentTypeRefetch,
+    refetch: investmentTypeRefetch
   } = useGetInvestmentTypeQuery(typeId);
   const [startInvestment, { isLoading: startInvestmentLoading, isError: startInvestmentIsError }] =
     useStartInvestmentMutation();
   const { data: invest, isLoading: investLoading, isError: investIsError, refetch } = useGetInvestmentQuery(typeId);
+
+  const [reinvest, { isLoading: reinvestLoading, isError: reinvestIsError, error: reinvestError }] =
+    useReinvestMutation();
 
   const [data, setData] = useState({ amount: 50, option: 1 });
 
@@ -55,6 +59,21 @@ const Investment = () => {
     try {
       const res = await startInvestment({ typeId, data }).unwrap();
       toast.success("New investment method has been started");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    } finally {
+      walletInfoRefetch();
+      investmentTypeRefetch();
+      refetch();
+    }
+  };
+
+  const updateHandler = async e => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await reinvest({ amount: data.amount, id: invest._id }).unwrap();
+      toast.success("Reinvestment amount has been updated");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     } finally {
@@ -97,19 +116,24 @@ const Investment = () => {
           <Input
             type="number"
             name="investment"
-            disabled={!isEmpty(invest)}
             value={data.amount}
             onChange={e => setData({ ...data, amount: e.target.value })}
-            min={50}
+            min={invest?.coin ? invest?.coin : 50}
             max={walletInfo?.coin}
           />
           <div className="text-right text-sm mt-1 font-semibold">Min: 50$</div>
         </div>
         {!isEmpty(invest) && <Timer endUTCTime={invest?.end} />}
         <div className="text-center pt-4">
-          <Button className="w-full" onClick={startHandler} disabled={!isEmpty(invest)}>
-            Start investment
-          </Button>
+          {isEmpty(invest) ? (
+            <Button className="w-full" onClick={startHandler}>
+              Start investment
+            </Button>
+          ) : (
+            <Button className="w-full" onClick={updateHandler}>
+              Update investment
+            </Button>
+          )}
         </div>
       </div>
     </div>

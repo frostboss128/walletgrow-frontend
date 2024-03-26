@@ -21,12 +21,12 @@ const Plan = ({ invType }) => {
           </div>
         </div>
         <div className="col-span-5">
-          <img src="/images/invest.svg" alt="invest_logo" width={150} height={150} />
+          <img src="/images/invest.svg" loading="lazy" alt="invest_logo" width={150} height={150} />
         </div>
       </div>
       <div className="grid grid-cols-3 items-center py-2">
         <div className="col-span-2 flex flex-row items-center space-x-2">
-          <img src="/images/user.svg" alt="user avatar" width={20} height={20} />
+          <img src="/images/user.svg" loading="lazy" alt="user avatar" width={20} height={20} />
           <span>{invType.userCnt}</span>
         </div>
         <div className="col-span-1">

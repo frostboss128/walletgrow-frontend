@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="text-gray-700 mt-12">
       <div className="bg-[#ebfdfd] max-w-full p-6 flex flex-col w-full sm:flex-row sm:gap-6 sm:justify-between  space-y-6">
         <div className="space-y-4">
-          <img src="/images/logo.svg" alt="logo" width={100} height={100} />
+          <img src="/images/logo.svg" loading="lazy" alt="logo" width={100} height={100} />
           <div className="text-3xl font-extrabold">WalletGrow</div>
           <div className="text-lg">
             Most <b className="text-2xl">Innovative</b> and <b className="text-2xl">Reliable</b> Crypto Earning Program
@@ -17,27 +17,27 @@ const Footer = () => {
           <ul className="flex flex-row gap-4">
             <li>
               <a href="https://t.me/WalletGrow1" target="_blank">
-                <img src="/images/socials/telegram.png" alt="telegram" width={32} height={32} />
+                <img src="/images/socials/telegram.png" loading="lazy" alt="telegram" width={32} height={32} />
               </a>
             </li>
             <li>
               <a href="https://x.com/Wallet_GrowX?t=FN-JlCx7hgclQ8gVCsa_kw&s=09" target="_blank">
-                <img src="/images/socials/twitter.png" alt="telegram" width={32} height={32} />
+                <img src="/images/socials/twitter.png" loading="lazy" alt="telegram" width={32} height={32} />
               </a>
             </li>
             <li>
               <a href="https://www.youtube.com/@walletgrowX" target="_blank">
-                <img src="/images/socials/youtube.png" alt="telegram" width={32} height={32} />
+                <img src="/images/socials/youtube.png" loading="lazy" alt="telegram" width={32} height={32} />
               </a>
             </li>
             <li>
               <a href="https://www.facebook.com/profile.php?id=61553556848909&mibextid=2JQ9oc" target="_blank">
-                <img src="/images/socials/facebook.png" alt="telegram" width={32} height={32} />
+                <img src="/images/socials/facebook.png" loading="lazy" alt="telegram" width={32} height={32} />
               </a>
             </li>
             <li>
               <a href="https://www.reddit.com/u/walletgrowX/s/LB8rTKv92Y" target="_blank">
-                <img src="/images/socials/reddit.png" alt="telegram" width={32} height={32} />
+                <img src="/images/socials/reddit.png" loading="lazy" alt="telegram" width={32} height={32} />
               </a>
             </li>
           </ul>

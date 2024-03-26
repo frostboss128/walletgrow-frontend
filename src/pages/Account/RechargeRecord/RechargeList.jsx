@@ -7,7 +7,7 @@ const RechargeList = ({ recharge }) => {
     <div className="pt-2">
       <div className="grid grid-cols-12 gap-2 items-stretch pb-2">
         <div className="col-span-2 flex items-center">
-          <img src={`/images/account/${recharge.type}.svg`} alt="type logo" width={50} height={50} />
+          <img src={`/images/account/${recharge.type}.svg`} loading="lazy" alt="type logo" width={50} height={50} />
         </div>
         <div className="col-span-7 flex flex-col">
           <div className="font-medium">{recharge.transactionId}</div>

@@ -14,7 +14,7 @@ const FutureCard = ({ src, name, type, description, className }) => {
     >
       <div className="flex flex-col gap-1 items-center">
         <div>
-          <img src={src} alt={name} width={100} height={100} />
+          <img src={src} loading="lazy" alt={name} width={100} height={100} />
         </div>
         <div className="text-xl font-bold">{name}</div>
       </div>

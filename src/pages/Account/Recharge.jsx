@@ -106,7 +106,7 @@ const Recharge = () => {
           <DialogTrigger asChild>
             <div className="flex flex-row justify-between items-center space-x-4 py-4 text-xs">
               <div>
-                <img src="/images/account/Tether.gif" alt="tether" width={120} />
+                <img src="/images/account/Tether.gif" loading="lazy" alt="tether" width={120} />
               </div>
               <div className="font-bold text-sm">
                 <div>USDT</div>
@@ -136,6 +136,7 @@ const Recharge = () => {
             <div className="grid place-content-center" onClick={walletAddressCopyHandler}>
               <img
                 src={`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${address1}`}
+                loading="lazy"
                 alt="usdt qr code"
                 width={150}
                 height={150}
@@ -163,7 +164,7 @@ const Recharge = () => {
           <DialogTrigger asChild>
             <div className="flex flex-row justify-between items-center space-x-4 py-4 text-xs">
               <div>
-                <img src="/images/account/TRX.gif" alt="tether" width={120} />
+                <img src="/images/account/TRX.gif" loading="lazy" alt="tether" width={120} />
               </div>
               <div className="font-bold text-sm">
                 <div>TRX</div>
@@ -193,6 +194,7 @@ const Recharge = () => {
             <div className="grid place-content-center" onClick={walletAddressCopyHandler}>
               <img
                 src={`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${address1}`}
+                loading="lazy"
                 alt="usdt qr code"
                 width={150}
                 height={150}

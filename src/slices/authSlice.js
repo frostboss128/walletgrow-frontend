@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userinfo: localStorage.getItem("userinfo") ? JSON.parse(localStorage.getItem("userinfo")) : null,
+  userinfo: localStorage.getItem("userinfo") ? JSON.parse(localStorage.getItem("userinfo")) : null
 };
 
 const authSlice = createSlice({
@@ -19,8 +19,9 @@ const authSlice = createSlice({
       state.userinfo = null;
       localStorage.removeItem("userinfo");
       localStorage.removeItem("expirationTime");
-    },
-  },
+      // window.location.href = "/";
+    }
+  }
 });
 
 export const { setCredentials, logout } = authSlice.actions;

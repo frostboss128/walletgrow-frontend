@@ -48,7 +48,7 @@ const Header = ({ onNavChange }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar>
-              <AvatarImage src="/images/user.svg" alt="user avatar" />
+              <AvatarImage src="/images/user.svg" loading="lazy" alt="user avatar" />
               <AvatarFallback>Admin</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>

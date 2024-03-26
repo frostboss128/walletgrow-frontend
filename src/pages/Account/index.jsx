@@ -10,7 +10,7 @@ import {
   CreditCard,
   Rocket,
   MessageCircleQuestion,
-  ChevronRight,
+  ChevronRight
 } from "lucide-react";
 import { Card } from "../../components/ui/card";
 import { Progress } from "../../components/ui/progress";
@@ -23,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
+  DialogClose
 } from "../../components/ui/dialog";
 import { Coins } from "lucide-react";
 
@@ -91,7 +91,7 @@ const Account = () => {
         </div> */}
 
         <div className="flex flex-row px-4 space-x-2 max-sx:text-sm items-center">
-          <img src="/images/account/wallet.svg" alt="wallet" width={40} />
+          <img src="/images/account/wallet.svg" loading="lazy" alt="wallet" width={40} />
           <div className="flex-grow">
             <div>X-Wallet Total Coin</div>
             <div>Daily reward upto 2.3%</div>
@@ -144,19 +144,19 @@ const Account = () => {
       <div className="space-y-8 py-4 px-2">
         <div className="grid grid-cols-1 sm:grid-cols-2 divide-y shadow-md rounded-md bg-gray-100">
           <div className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/message.svg" alt="message" width={30} />
+            <img src="/images/account/message.svg" loading="lazy" alt="message" width={30} />
             <div className="flex-grow">Message</div>
             <ChevronRight />
           </div>
           <Link to="/account/invited_friends" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/invite_friend.svg" alt="invite_friend" width={30} />
+            <img src="/images/account/invite_friend.svg" loading="lazy" alt="invite_friend" width={30} />
             <div className="flex-grow">Invited Friends</div>
             <ChevronRight />
           </Link>
           <Dialog>
             <DialogTrigger asChild>
               <div className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-                <img src="/images/account/invite_info.svg" alt="invite_info" width={30} />
+                <img src="/images/account/invite_info.svg" loading="lazy" alt="invite_info" width={30} />
                 <div className="flex-grow">Invite Info</div>
                 <ChevronRight />
               </div>
@@ -174,6 +174,7 @@ const Account = () => {
               <div className="grid place-content-center" onClick={inviteLinkCopyHandler}>
                 <img
                   src={`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=inviteURL${accountInfo?.email}`}
+                  loading="lazy"
                   alt="invite info qr code"
                   width={200}
                   height={200}
@@ -188,22 +189,22 @@ const Account = () => {
             </DialogContent>
           </Dialog>
           <Link to="/account/commission_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/commission.svg" alt="invite_info" width={30} />
+            <img src="/images/account/commission.svg" loading="lazy" alt="invite_info" width={30} />
             <div className="flex-grow">Commission Record</div>
             <ChevronRight />
           </Link>
           <Link to="/account/finance_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/finance.svg" alt="finance" width={30} />
+            <img src="/images/account/finance.svg" loading="lazy" alt="finance" width={30} />
             <div className="flex-grow">Finance Record</div>
             <ChevronRight />
           </Link>
           <Link to="/account/recharge_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/recharge.svg" alt="recharge" width={30} />
+            <img src="/images/account/recharge.svg" loading="lazy" alt="recharge" width={30} />
             <div className="flex-grow">Recharge Record</div>
             <ChevronRight />
           </Link>
           <Link to="/account/withdraw_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/withdraw_record.svg" alt="withdraw record" width={30} />
+            <img src="/images/account/withdraw_record.svg" loading="lazy" alt="withdraw record" width={30} />
             <div className="flex-grow">Withdraw Record</div>
             <ChevronRight />
           </Link>
@@ -211,17 +212,17 @@ const Account = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 divide-y shadow-md rounded-md bg-gray-100">
           <Link to="/account/withdraw_record" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/password.svg" alt="password" width={30} />
+            <img src="/images/account/password.svg" loading="lazy" alt="password" width={30} />
             <div className="flex-grow">Password</div>
             <ChevronRight />
           </Link>
           <Link to="/account/service" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/service.svg" alt="service" width={30} />
+            <img src="/images/account/service.svg" loading="lazy" alt="service" width={30} />
             <div className="flex-grow">Service</div>
             <ChevronRight />
           </Link>
           <Link to="/" className="flex flex-row w-full space-x-2 text-lg items-center p-2">
-            <img src="/images/account/about.svg" alt="about" width={30} />
+            <img src="/images/account/about.svg" loading="lazy" alt="about" width={30} />
             <div className="flex-grow">About Us</div>
             <ChevronRight />
           </Link>

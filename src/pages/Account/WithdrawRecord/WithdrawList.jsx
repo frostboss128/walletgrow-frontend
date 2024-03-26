@@ -7,7 +7,14 @@ const RechargeList = ({ withdraw }) => {
     <div className="pt-2">
       <div className="grid grid-cols-12 gap-2 items-stretch pb-2">
         <div className="col-span-2 flex items-center w-12">
-          <img src={`/images/account/withdraw.png`} alt="withdraw image" width={50} height={50} className="!w-12" />
+          <img
+            src={`/images/account/withdraw.png`}
+            loading="lazy"
+            alt="withdraw image"
+            width={50}
+            height={50}
+            className="!w-12"
+          />
         </div>
         <div className="col-span-7 flex flex-col">
           <div className="font-medium truncate">{withdraw.address}</div>

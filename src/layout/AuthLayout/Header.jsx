@@ -9,7 +9,14 @@ const Header = () => {
   return (
     <div className="flex flex-row p-4">
       <Link to="/">
-        <img src="/images/logo.svg" alt="logo" width={50} height={50} className="drop-shadow-[5px_5px_15px_#68c9fa]" />
+        <img
+          src="/images/logo.svg"
+          loading="lazy"
+          alt="logo"
+          width={50}
+          height={50}
+          className="drop-shadow-[5px_5px_15px_#68c9fa]"
+        />
       </Link>
       <div className="relative ml-auto"></div>
 

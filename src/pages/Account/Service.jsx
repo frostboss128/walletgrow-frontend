@@ -15,7 +15,7 @@ const Service = () => {
           </p>
         </div>
         <div>
-          <img src="/images/account/service/service.svg" alt="service" />
+          <img src="/images/account/service/service.svg" loading="lazy" alt="service" />
         </div>
       </div>
 
@@ -23,7 +23,7 @@ const Service = () => {
         <div className="space-y-2">
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/telegram-round.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/telegram-round.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Customer service 1</div>
             <div>
@@ -32,7 +32,7 @@ const Service = () => {
           </div>
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/telegram-round.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/telegram-round.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Customer service 2</div>
             <div>
@@ -41,7 +41,7 @@ const Service = () => {
           </div>
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/telegram-round.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/telegram-round.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Customer service 3</div>
             <div>
@@ -50,7 +50,7 @@ const Service = () => {
           </div>
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/telegram-round.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/telegram-round.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Telegram Official Chat</div>
             <div>
@@ -59,7 +59,7 @@ const Service = () => {
           </div>
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/telegram-round.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/telegram-round.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Telegram Official Channel</div>
             <div>
@@ -71,7 +71,7 @@ const Service = () => {
         <div className="space-y-2">
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/instagram.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/instagram.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Customer Service</div>
             <div>
@@ -80,7 +80,7 @@ const Service = () => {
           </div>
           <div className="flex flex-row justify-between items-center space-x-2 p-3 bg-cyan-100 rounded-lg">
             <div>
-              <img src="/images/account/service/messenger.svg" alt="telegram-round" width={30} />
+              <img src="/images/account/service/messenger.svg" loading="lazy" alt="telegram-round" width={30} />
             </div>
             <div className="flex-grow">Customer Service</div>
             <div>
@@ -94,22 +94,22 @@ const Service = () => {
         <div>Follow us</div>
         <ul className="flex flex-row justify-between space-x-4 items-center">
           <li>
-            <img src="/images/account/service/telegram.svg" alt="telegram" width={50} />
+            <img src="/images/account/service/telegram.svg" loading="lazy" alt="telegram" width={50} />
           </li>
           <li>
-            <img src="/images/account/service/instagram.svg" alt="telegram" width={50} />
+            <img src="/images/account/service/instagram.svg" loading="lazy" alt="telegram" width={50} />
           </li>
           <li>
-            <img src="/images/account/service/facebook.svg" alt="telegram" width={50} />
+            <img src="/images/account/service/facebook.svg" loading="lazy" alt="telegram" width={50} />
           </li>
           <li>
-            <img src="/images/account/service/x.svg" alt="telegram" width={50} />
+            <img src="/images/account/service/x.svg" loading="lazy" alt="telegram" width={50} />
           </li>
           <li>
-            <img src="/images/account/service/youtube.svg" alt="telegram" width={50} />
+            <img src="/images/account/service/youtube.svg" loading="lazy" alt="telegram" width={50} />
           </li>
           <li>
-            <img src="/images/account/service/discord.svg" alt="telegram" width={50} />
+            <img src="/images/account/service/discord.svg" loading="lazy" alt="telegram" width={50} />
           </li>
         </ul>
       </div>
