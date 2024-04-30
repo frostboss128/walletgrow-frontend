@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HelpCircle, CircleUserRound, LogOut } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../slices/authSlice";
@@ -15,13 +15,22 @@ const Wallet = () => {
   const dispatch = useDispatch();
   const { userinfo } = useSelector(({ auth }) => auth);
   const [logoutApiCall, { isLoading: logoutLoading }] = useLogoutMutation();
-  const { data: walletInfo, isLoading: walletInfoLoading, isError: walletInfoIsError } = useGetWalletInfoQuery();
+  const {
+    data: walletInfo,
+    isLoading: walletInfoLoading,
+    isError: walletInfoIsError,
+    refetch
+  } = useGetWalletInfoQuery();
   const {
     data: investmentType,
     isLoading: investmentTypeLoading,
-    isError: investmentTypeIsError,
+    isError: investmentTypeIsError
   } = useGetAllInvestmentTypeQuery();
-  const { data: invests, isLoading: investsLoading, isError: investsIsError } = useGetInvestmentsQuery();
+  // const { data: invests, isLoading: investsLoading, isError: investsIsError } = useGetInvestmentsQuery();
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   const logOutHandler = async e => {
     e.preventDefault();
